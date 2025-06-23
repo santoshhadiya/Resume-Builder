@@ -9,8 +9,9 @@ function ModernTemplate({ formData }) {
 
     return (
         <div id="resume-preview" className="flex font-sans w-[210mm] min-h-[297mm] mx-auto shadow-lg">
-            {/* Left Column */}
-            <div className={leftColClasses}>
+           <div style={{display:'flex', minHeight:'287mm'}}>
+             {/* Left Column */}
+            <div className={leftColClasses} style={{height:'100vh'}} >
                 <header className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-white">{formData.name || "Your Name"}</h1>
                 </header>
@@ -78,6 +79,7 @@ function ModernTemplate({ formData }) {
                     </section>
                 )}
             </div>
+           </div>
         </div>
     );
 }

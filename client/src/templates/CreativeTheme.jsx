@@ -33,7 +33,7 @@ const CreativeTheme = ({ formData }) => {
 
   const sectionStyle = {
     marginBottom: '30px',
-    pageBreakInside: 'avoid'
+  /*   pageBreakInside: 'avoid' */
   };
 
   const sectionTitleStyle = {
@@ -48,7 +48,8 @@ const CreativeTheme = ({ formData }) => {
   // --- Main Component Render ---
   return (
     <div style={pageStyle} id='resume-preview'>
-      {/* Left Column */}
+     <div style={{display:'flex', width:'100%',height:'100%'}}>
+       {/* Left Column */}
       <aside style={leftColumnStyle}>
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
           <img 
@@ -138,6 +139,7 @@ const CreativeTheme = ({ formData }) => {
           </section>
         )}
       </main>
+     </div>
     </div>
   );
 };

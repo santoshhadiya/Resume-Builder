@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Resume</title>
+  <style>
+    /* Critical CSS for page layout and to prevent overflow */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    body {
+      margin: 250px;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      /* Ensures background colors print */
+      print-color-adjust: exact;
+    }
+
+    /* Ensure the root preview element adheres to the A4 box model */
+    #resume-preview {
+      width: 210mm !important;
+      min-height: 297mm !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      /* Prevents content from spilling */
+    }
+
+    /* --- Inlined all page CSS, including Tailwind --- */
+    @layer properties;
+    @layer theme, base, components, utilities;
+
+    @layer theme {
+
+      :root,
+      :host {
+        --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        --color-red-500: oklch(63.7% 0.237 25.331);
+        --color-red-600: oklch(57.7% 0.245 27.325);
+        --color-green-600: oklch(62.7% 0.194 149.214);
+        --color-blue-100: oklch(93.2% 0.032 255.585);
+        --color-blue-200: oklch(88.2% 0.059 254.128);
+        --color-blue-300: oklch(80.9% 0.105 251.813);
+        --color-blue-500: oklch(62.3% 0.214 259.815);
+        --color-blue-600: oklch(54.6% 0.245 262.881);
+        --color-blue-800: oklch(42.4% 0.199 265.638);
+        --color-gray-100: oklch(96.7% 0.003 264.542);
+        --color-gray-200: oklch(92.8% 0.006 264.531);
+        --color-gray-300: oklch(87.2% 0.01 258.338);
+        --color-gray-400: oklch(70.7% 0.022 261.325);
+        --color-gray-500: oklch(55.1% 0.027 264.364);
+        --color-gray-600: oklch(44.6% 0.03 256.802);
+        --color-gray-700: oklch(37.3% 0.034 259.733);
+        --color-gray-800: oklch(27.8% 0.033 256.848);
+        --color-gray-900: oklch(21% 0.034 264.665);
+        --color-black: #000;
+        --color-white: #fff;
+        --spacing: 0.25rem;
+        --container-md: 28rem;
+        --text-sm: 0.875rem;
+        --text-sm--line-height: calc(1.25 / 0.875);
+        --text-base: 1rem;
+        --text-base--line-height: calc(1.5 / 1);
+        --text-lg: 1.125rem;
+        --text-lg--line-height: calc(1.75 / 1.125);
+        --text-xl: 1.25rem;
+        --text-xl--line-height: calc(1.75 / 1.25);
+        --text-4xl: 2.25rem;
+        --text-4xl--line-height: calc(2.5 / 2.25);
+        --font-weight-normal: 400;
+        --font-weight-medium: 500;
+        --font-weight-semibold: 600;
+        --font-weight-bold: 700;
+        --font-weight-extrabold: 800;
+        --tracking-tight: -0.025em;
+        --tracking-wider: 0.05em;
+        --leading-tight: 1.25;
+        --leading-normal: 1.5;
+        --leading-relaxed: 1.625;
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --aspect-video: 16 / 9;
+        --default-transition-duration: 150ms;
+        --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        --default-font-family: var(--font-sans);
+        --default-mono-font-family: var(--font-mono);
+      }
+    }
+
+    @layer base {
+
+      *,
+      ::after,
+      ::before,
+      ::backdrop,
+      ::file-selector-button {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        border: 0px solid;
+      }
+
+      html,
+      :host {
+        line-height: 1.5;
+        text-size-adjust: 100%;
+        tab-size: 4;
+        font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+        font-feature-settings: var(--default-font-feature-settings, normal);
+        font-variation-settings: var(--default-font-variation-settings, normal);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      hr {
+        height: 0px;
+        color: inherit;
+        border-top-width: 1px;
+      }
+
+      abbr:where([title]) {
+        text-decoration: underline dotted;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: inherit;
+        font-weight: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+      b,
+      strong {
+        font-weight: bolder;
+      }
+
+      code,
+      kbd,
+      samp,
+      pre {
+        font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+        font-feature-settings: var(--default-mono-font-feature-settings, normal);
+        font-variation-settings: var(--default-mono-font-variation-settings, normal);
+        font-size: 1em;
+      }
+
+      small {
+        font-size: 80%;
+      }
+
+      sub,
+      sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+      }
+
+      sub {
+        bottom: -0.25em;
+      }
+
+      sup {
+        top: -0.5em;
+      }
+
+      table {
+        text-indent: 0px;
+        border-color: inherit;
+        border-collapse: collapse;
+      }
+
+      progress {
+        vertical-align: baseline;
+      }
+
+      summary {
+        display: list-item;
+      }
+
+      ol,
+      ul,
+      menu {
+        list-style: none;
+      }
+
+      img,
+      svg,
+      video,
+      canvas,
+      audio,
+      iframe,
+      embed,
+      object {
+        display: block;
+        vertical-align: middle;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+
+      button,
+      input,
+      select,
+      optgroup,
+      textarea,
+      ::file-selector-button {
+        font: inherit;
+        letter-spacing: inherit;
+        color: inherit;
+        border-radius: 0px;
+        background-color: transparent;
+        opacity: 1;
+      }
+
+      :where(select:is([multiple], [size])) optgroup {
+        font-weight: bolder;
+      }
+
+      :where(select:is([multiple], [size])) optgroup option {
+        padding-inline-start: 20px;
+      }
+
+      ::file-selector-button {
+        margin-inline-end: 4px;
+      }
+
+      ::placeholder {
+        opacity: 1;
+      }
+
+      @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+        ::placeholder {
+          color: currentcolor;
+
+          @supports (color: color-mix(in lab, red, red)) {
+            color: color-mix(in oklab, currentcolor, transparent);
+          }
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      ::-webkit-search-decoration {
+        appearance: none;
+      }
+
+      ::-webkit-date-and-time-value {
+        min-height: 1lh;
+        text-align: inherit;
+      }
+
+      ::-webkit-datetime-edit {
+        display: inline-flex;
+      }
+
+      ::-webkit-datetime-edit-fields-wrapper {
+        padding: 0px;
+      }
+
+      ::-webkit-datetime-edit,
+      ::-webkit-datetime-edit-year-field,
+      ::-webkit-datetime-edit-month-field,
+      ::-webkit-datetime-edit-day-field,
+      ::-webkit-datetime-edit-hour-field,
+      ::-webkit-datetime-edit-minute-field,
+      ::-webkit-datetime-edit-second-field,
+      ::-webkit-datetime-edit-millisecond-field,
+      ::-webkit-datetime-edit-meridiem-field {
+        padding-block: 0px;
+      }
+
+      button,
+      input:where([type="button"], [type="reset"], [type="submit"]),
+      ::file-selector-button {
+        appearance: button;
+      }
+
+      ::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+        height: auto;
+      }
+
+      [hidden]:where(:not([hidden="until-found"])) {
+        display: none !important;
+      }
+    }
+
+    @layer utilities {
+      .\@container {
+        container-type: inline-size;
+      }
+
+      .absolute {
+        position: absolute;
+      }
+
+      .fixed {
+        position: fixed;
+      }
+
+      .relative {
+        position: relative;
+      }
+
+      .inset-0 {
+        inset: calc(var(--spacing) * 0);
+      }
+
+      .z-50 {
+        z-index: 50;
+      }
+
+      .mx-auto {
+        margin-inline: auto;
+      }
+
+      .my-2 {
+        margin-block: calc(var(--spacing) * 2);
+      }
+
+      .mt-1 {
+        margin-top: calc(var(--spacing) * 1);
+      }
+
+      .mt-2 {
+        margin-top: calc(var(--spacing) * 2);
+      }
+
+      .mt-4 {
+        margin-top: calc(var(--spacing) * 4);
+      }
+
+      .mr-2 {
+        margin-right: calc(var(--spacing) * 2);
+      }
+
+      .mb-2 {
+        margin-bottom: calc(var(--spacing) * 2);
+      }
+
+      .mb-3 {
+        margin-bottom: calc(var(--spacing) * 3);
+      }
+
+      .mb-4 {
+        margin-bottom: calc(var(--spacing) * 4);
+      }
+
+      .mb-6 {
+        margin-bottom: calc(var(--spacing) * 6);
+      }
+
+      .mb-8 {
+        margin-bottom: calc(var(--spacing) * 8);
+      }
+
+      .mb-10 {
+        margin-bottom: calc(var(--spacing) * 10);
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .grid {
+        display: grid;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .inline-block {
+        display: inline-block;
+      }
+
+      .inline-flex {
+        display: inline-flex;
+      }
+
+      .aspect-\[3\/4\] {
+        aspect-ratio: 3 / 4;
+      }
+
+      .aspect-square {
+        aspect-ratio: 1 / 1;
+      }
+
+      .aspect-video {
+        aspect-ratio: var(--aspect-video);
+      }
+
+      .size-4 {
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+      }
+
+      .size-10 {
+        width: calc(var(--spacing) * 10);
+        height: calc(var(--spacing) * 10);
+      }
+
+      .size-full {
+        width: 100%;
+        height: 100%;
+      }
+
+      .h-2 {
+        height: calc(var(--spacing) * 2);
+      }
+
+      .h-8 {
+        height: calc(var(--spacing) * 8);
+      }
+
+      .h-10 {
+        height: calc(var(--spacing) * 10);
+      }
+
+      .h-12 {
+        height: calc(var(--spacing) * 12);
+      }
+
+      .h-14 {
+        height: calc(var(--spacing) * 14);
+      }
+
+      .h-\[72px\] {
+        height: 72px;
+      }
+
+      .h-\[400px\] {
+        height: 400px;
+      }
+
+      .h-full {
+        height: 100%;
+      }
+
+      .max-h-60 {
+        max-height: calc(var(--spacing) * 60);
+      }
+
+      .min-h-32 {
+        min-height: calc(var(--spacing) * 32);
+      }
+
+      .min-h-\[297mm\] {
+        min-height: 297mm;
+      }
+
+      .min-h-screen {
+        min-height: 100vh;
+      }
+
+      .w-1\/3 {
+        width: calc(33.3333%);
+      }
+
+      .w-2\/3 {
+        width: calc(66.6667%);
+      }
+
+      .w-32 {
+        width: calc(var(--spacing) * 32);
+      }
+
+      .w-60 {
+        width: calc(var(--spacing) * 60);
+      }
+
+      .w-\[210mm\] {
+        width: 210mm;
+      }
+
+      .w-\[400px\] {
+        width: 400px;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .max-w-\[480px\] {
+        max-width: 480px;
+      }
+
+      .max-w-\[960px\] {
+        max-width: 960px;
+      }
+
+      .max-w-md {
+        max-width: var(--container-md);
+      }
+
+      .min-w-0 {
+        min-width: calc(var(--spacing) * 0);
+      }
+
+      .min-w-40 {
+        min-width: calc(var(--spacing) * 40);
+      }
+
+      .min-w-72 {
+        min-width: calc(var(--spacing) * 72);
+      }
+
+      .min-w-\[84px\] {
+        min-width: 84px;
+      }
+
+      .flex-1 {
+        flex: 1 1 0%;
+      }
+
+      .grow {
+        flex-grow: 1;
+      }
+
+      .transform {
+        transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
+      }
+
+      .cursor-pointer {
+        cursor: pointer;
+      }
+
+      .resize-none {
+        resize: none;
+      }
+
+      .list-inside {
+        list-style-position: inside;
+      }
+
+      .list-disc {
+        list-style-type: disc;
+      }
+
+      .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0px, 1fr));
+      }
+
+      .grid-cols-\[repeat\(auto-fit\,minmax\(158px\,1fr\)\)\] {
+        grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .items-end {
+        align-items: flex-end;
+      }
+
+      .items-stretch {
+        align-items: stretch;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-end {
+        justify-content: flex-end;
+      }
+
+      .justify-start {
+        justify-content: flex-start;
+      }
+
+      .justify-stretch {
+        justify-content: stretch;
+      }
+
+      .gap-1 {
+        gap: calc(var(--spacing) * 1);
+      }
+
+      .gap-2 {
+        gap: calc(var(--spacing) * 2);
+      }
+
+      .gap-3 {
+        gap: calc(var(--spacing) * 3);
+      }
+
+      .gap-4 {
+        gap: calc(var(--spacing) * 4);
+      }
+
+      .gap-6 {
+        gap: calc(var(--spacing) * 6);
+      }
+
+      .gap-8 {
+        gap: calc(var(--spacing) * 8);
+      }
+
+      .gap-9 {
+        gap: calc(var(--spacing) * 9);
+      }
+
+      .space-y-6 {
+        :where(& > :not(:last-child)) {
+          --tw-space-y-reverse: 0;
+          margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+          margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+        }
+      }
+
+      .gap-x-4 {
+        column-gap: calc(var(--spacing) * 4);
+      }
+
+      .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .overflow-hidden {
+        overflow: hidden;
+      }
+
+      .overflow-x-hidden {
+        overflow-x: hidden;
+      }
+
+      .overflow-y-auto {
+        overflow-y: auto;
+      }
+
+      .rounded {
+        border-radius: 0.25rem;
+      }
+
+      .rounded-full {
+        border-radius: calc(infinity * 1px);
+      }
+
+      .rounded-lg {
+        border-radius: var(--radius-lg);
+      }
+
+      .rounded-md {
+        border-radius: var(--radius-md);
+      }
+
+      .border {
+        border-style: var(--tw-border-style);
+        border-width: 1px;
+      }
+
+      .border-t {
+        border-top-style: var(--tw-border-style);
+        border-top-width: 1px;
+      }
+
+      .border-t-2 {
+        border-top-style: var(--tw-border-style);
+        border-top-width: 2px;
+      }
+
+      .border-b {
+        border-bottom-style: var(--tw-border-style);
+        border-bottom-width: 1px;
+      }
+
+      .border-b-2 {
+        border-bottom-style: var(--tw-border-style);
+        border-bottom-width: 2px;
+      }
+
+      .border-none {
+        --tw-border-style: none;
+        border-style: none;
+      }
+
+      .border-solid {
+        --tw-border-style: solid;
+        border-style: solid;
+      }
+
+      .border-\[\#dbe0e6\] {
+        border-color: rgb(219, 224, 230);
+      }
+
+      .border-blue-200 {
+        border-color: var(--color-blue-200);
+      }
+
+      .border-gray-200 {
+        border-color: var(--color-gray-200);
+      }
+
+      .border-gray-500 {
+        border-color: var(--color-gray-500);
+      }
+
+      .border-t-\[\#dbe0e6\] {
+        border-top-color: rgb(219, 224, 230);
+      }
+
+      .border-b-\[\#f0f2f5\] {
+        border-bottom-color: rgb(240, 242, 245);
+      }
+
+      .bg-\[\#0c7ff2\] {
+        background-color: rgb(12, 127, 242);
+      }
+
+      .bg-\[\#111418\] {
+        background-color: rgb(17, 20, 24);
+      }
+
+      .bg-\[\#dbe0e6\] {
+        background-color: rgb(219, 224, 230);
+      }
+
+      .bg-\[\#f0f2f5\] {
+        background-color: rgb(240, 242, 245);
+      }
+
+      .bg-black {
+        background-color: var(--color-black);
+      }
+
+      .bg-blue-100 {
+        background-color: var(--color-blue-100);
+      }
+
+      .bg-blue-500 {
+        background-color: var(--color-blue-500);
+      }
+
+      .bg-gray-200 {
+        background-color: var(--color-gray-200);
+      }
+
+      .bg-gray-300 {
+        background-color: var(--color-gray-300);
+      }
+
+      .bg-gray-800 {
+        background-color: var(--color-gray-800);
+      }
+
+      .bg-red-500 {
+        background-color: var(--color-red-500);
+      }
+
+      .bg-white {
+        background-color: var(--color-white);
+      }
+
+      .bg-cover {
+        background-size: cover;
+      }
+
+      .bg-center {
+        background-position: center center;
+      }
+
+      .bg-no-repeat {
+        background-repeat: no-repeat;
+      }
+
+      .p-3 {
+        padding: calc(var(--spacing) * 3);
+      }
+
+      .p-4 {
+        padding: calc(var(--spacing) * 4);
+      }
+
+      .p-6 {
+        padding: calc(var(--spacing) * 6);
+      }
+
+      .p-8 {
+        padding: calc(var(--spacing) * 8);
+      }
+
+      .px-3 {
+        padding-inline: calc(var(--spacing) * 3);
+      }
+
+      .px-4 {
+        padding-inline: calc(var(--spacing) * 4);
+      }
+
+      .px-5 {
+        padding-inline: calc(var(--spacing) * 5);
+      }
+
+      .px-10 {
+        padding-inline: calc(var(--spacing) * 10);
+      }
+
+      .px-40 {
+        padding-inline: calc(var(--spacing) * 40);
+      }
+
+      .py-1 {
+        padding-block: calc(var(--spacing) * 1);
+      }
+
+      .py-2 {
+        padding-block: calc(var(--spacing) * 2);
+      }
+
+      .py-3 {
+        padding-block: calc(var(--spacing) * 3);
+      }
+
+      .py-4 {
+        padding-block: calc(var(--spacing) * 4);
+      }
+
+      .py-5 {
+        padding-block: calc(var(--spacing) * 5);
+      }
+
+      .pt-5 {
+        padding-top: calc(var(--spacing) * 5);
+      }
+
+      .pb-1 {
+        padding-bottom: calc(var(--spacing) * 1);
+      }
+
+      .pb-2 {
+        padding-bottom: calc(var(--spacing) * 2);
+      }
+
+      .pb-3 {
+        padding-bottom: calc(var(--spacing) * 3);
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      .font-sans {
+        font-family: var(--font-sans);
+      }
+
+      .text-4xl {
+        font-size: var(--text-4xl);
+        line-height: var(--tw-leading, var(--text-4xl--line-height));
+      }
+
+      .text-base {
+        font-size: var(--text-base);
+        line-height: var(--tw-leading, var(--text-base--line-height));
+      }
+
+      .text-lg {
+        font-size: var(--text-lg);
+        line-height: var(--tw-leading, var(--text-lg--line-height));
+      }
+
+      .text-sm {
+        font-size: var(--text-sm);
+        line-height: var(--tw-leading, var(--text-sm--line-height));
+      }
+
+      .text-xl {
+        font-size: var(--text-xl);
+        line-height: var(--tw-leading, var(--text-xl--line-height));
+      }
+
+      .text-\[22px\] {
+        font-size: 22px;
+      }
+
+      .text-\[32px\] {
+        font-size: 32px;
+      }
+
+      .leading-normal {
+        --tw-leading: var(--leading-normal);
+        line-height: var(--leading-normal);
+      }
+
+      .leading-relaxed {
+        --tw-leading: var(--leading-relaxed);
+        line-height: var(--leading-relaxed);
+      }
+
+      .leading-tight {
+        --tw-leading: var(--leading-tight);
+        line-height: var(--leading-tight);
+      }
+
+      .font-bold {
+        --tw-font-weight: var(--font-weight-bold);
+        font-weight: var(--font-weight-bold);
+      }
+
+      .font-extrabold {
+        --tw-font-weight: var(--font-weight-extrabold);
+        font-weight: var(--font-weight-extrabold);
+      }
+
+      .font-medium {
+        --tw-font-weight: var(--font-weight-medium);
+        font-weight: var(--font-weight-medium);
+      }
+
+      .font-normal {
+        --tw-font-weight: var(--font-weight-normal);
+        font-weight: var(--font-weight-normal);
+      }
+
+      .font-semibold {
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      .tracking-\[-0\.015em\] {
+        --tw-tracking: -0.015em;
+        letter-spacing: -0.015em;
+      }
+
+      .tracking-\[0\.015em\] {
+        --tw-tracking: 0.015em;
+        letter-spacing: 0.015em;
+      }
+
+      .tracking-tight {
+        --tw-tracking: var(--tracking-tight);
+        letter-spacing: var(--tracking-tight);
+      }
+
+      .tracking-wider {
+        --tw-tracking: var(--tracking-wider);
+        letter-spacing: var(--tracking-wider);
+      }
+
+      .whitespace-nowrap {
+        white-space: nowrap;
+      }
+
+      .text-\[\#60758a\] {
+        color: rgb(96, 117, 138);
+      }
+
+      .text-\[\#111418\] {
+        color: rgb(17, 20, 24);
+      }
+
+      .text-blue-300 {
+        color: var(--color-blue-300);
+      }
+
+      .text-blue-600 {
+        color: var(--color-blue-600);
+      }
+
+      .text-blue-800 {
+        color: var(--color-blue-800);
+      }
+
+      .text-gray-300 {
+        color: var(--color-gray-300);
+      }
+
+      .text-gray-500 {
+        color: var(--color-gray-500);
+      }
+
+      .text-gray-600 {
+        color: var(--color-gray-600);
+      }
+
+      .text-gray-700 {
+        color: var(--color-gray-700);
+      }
+
+      .text-gray-800 {
+        color: var(--color-gray-800);
+      }
+
+      .text-gray-900 {
+        color: var(--color-gray-900);
+      }
+
+      .text-green-600 {
+        color: var(--color-green-600);
+      }
+
+      .text-red-600 {
+        color: var(--color-red-600);
+      }
+
+      .text-white {
+        color: var(--color-white);
+      }
+
+      .uppercase {
+        text-transform: uppercase;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .shadow-lg {
+        --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+
+      .shadow-md {
+        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+
+      .transition-all {
+        transition-property: all;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+        transition-duration: var(--tw-duration, var(--default-transition-duration));
+      }
+
+      .transition-transform {
+        transition-property: transform, translate, scale, rotate;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+        transition-duration: var(--tw-duration, var(--default-transition-duration));
+      }
+
+      .duration-300 {
+        --tw-duration: 300ms;
+        transition-duration: 300ms;
+      }
+
+      .placeholder\:text-\[\#60758a\] {
+        &::placeholder {
+          color: rgb(96, 117, 138);
+        }
+      }
+
+      .hover\:scale-105 {
+        &:hover {
+          @media (hover: hover) {
+            --tw-scale-x: 105%;
+            --tw-scale-y: 105%;
+            --tw-scale-z: 105%;
+            scale: var(--tw-scale-x) var(--tw-scale-y);
+          }
+        }
+      }
+
+      .hover\:bg-blue-600 {
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-blue-600);
+          }
+        }
+      }
+
+      .hover\:bg-gray-100 {
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-gray-100);
+          }
+        }
+      }
+
+      .hover\:bg-gray-400 {
+        &:hover {
+          @media (hover: hover) {
+            background-color: var(--color-gray-400);
+          }
+        }
+      }
+
+      .hover\:underline {
+        &:hover {
+          @media (hover: hover) {
+            text-decoration-line: underline;
+          }
+        }
+      }
+
+      .focus\:border-none {
+        &:focus {
+          --tw-border-style: none;
+          border-style: none;
+        }
+      }
+
+      .focus\:ring-0 {
+        &:focus {
+          --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+        }
+      }
+
+      .focus\:outline-0 {
+        &:focus {
+          outline-style: var(--tw-outline-style);
+          outline-width: 0px;
+        }
+      }
+
+      .sm\:grid-cols-2 {
+        @media (width >=40rem) {
+          grid-template-columns: repeat(2, minmax(0px, 1fr));
+        }
+      }
+
+      .md\:grid-cols-3 {
+        @media (width >=48rem) {
+          grid-template-columns: repeat(3, minmax(0px, 1fr));
+        }
+      }
+
+      .\@\[520px\]\:flex-row {
+        @container (width >=520px) {
+          flex-direction: row;
+        }
+      }
+
+      .\@\[520px\]\:items-center {
+        @container (width >=520px) {
+          align-items: center;
+        }
+      }
+
+      .\@\[520px\]\:justify-between {
+        @container (width >=520px) {
+          justify-content: space-between;
+        }
+      }
+
+      .\@xl\:flex-row {
+        @container (width >=36rem) {
+          flex-direction: row;
+        }
+      }
+
+      .\@xl\:items-start {
+        @container (width >=36rem) {
+          align-items: flex-start;
+        }
+      }
+
+      .\@xl\:px-4 {
+        @container (width >=36rem) {
+          padding-inline: calc(var(--spacing) * 4);
+        }
+      }
+    }
+
+    @property --tw-rotate-x {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-rotate-y {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-rotate-z {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-skew-x {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-skew-y {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-space-y-reverse {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0;
+    }
+
+    @property --tw-border-style {
+      syntax: "*";
+      inherits: false;
+      initial-value: solid;
+    }
+
+    @property --tw-leading {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-font-weight {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-tracking {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+
+    @property --tw-shadow-color {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-shadow-alpha {
+      syntax: "<percentage>";
+      inherits: false;
+      initial-value: 100%;
+    }
+
+    @property --tw-inset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+
+    @property --tw-inset-shadow-color {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-inset-shadow-alpha {
+      syntax: "<percentage>";
+      inherits: false;
+      initial-value: 100%;
+    }
+
+    @property --tw-ring-color {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+
+    @property --tw-inset-ring-color {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-inset-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+
+    @property --tw-ring-inset {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-ring-offset-width {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
+    }
+
+    @property --tw-ring-offset-color {
+      syntax: "*";
+      inherits: false;
+      initial-value: #fff;
+    }
+
+    @property --tw-ring-offset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+
+    @property --tw-duration {
+      syntax: "*";
+      inherits: false;
+    }
+
+    @property --tw-scale-x {
+      syntax: "*";
+      inherits: false;
+      initial-value: 1;
+    }
+
+    @property --tw-scale-y {
+      syntax: "*";
+      inherits: false;
+      initial-value: 1;
+    }
+
+    @property --tw-scale-z {
+      syntax: "*";
+      inherits: false;
+      initial-value: 1;
+    }
+
+    @property --tw-outline-style {
+      syntax: "*";
+      inherits: false;
+      initial-value: solid;
+    }
+
+    @layer properties {
+      @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+
+        *,
+        ::before,
+        ::after,
+        ::backdrop {
+          --tw-rotate-x: initial;
+          --tw-rotate-y: initial;
+          --tw-rotate-z: initial;
+          --tw-skew-x: initial;
+          --tw-skew-y: initial;
+          --tw-space-y-reverse: 0;
+          --tw-border-style: solid;
+          --tw-leading: initial;
+          --tw-font-weight: initial;
+          --tw-tracking: initial;
+          --tw-shadow: 0 0 #0000;
+          --tw-shadow-color: initial;
+          --tw-shadow-alpha: 100%;
+          --tw-inset-shadow: 0 0 #0000;
+          --tw-inset-shadow-color: initial;
+          --tw-inset-shadow-alpha: 100%;
+          --tw-ring-color: initial;
+          --tw-ring-shadow: 0 0 #0000;
+          --tw-inset-ring-color: initial;
+          --tw-inset-ring-shadow: 0 0 #0000;
+          --tw-ring-inset: initial;
+          --tw-ring-offset-width: 0px;
+          --tw-ring-offset-color: #fff;
+          --tw-ring-offset-shadow: 0 0 #0000;
+          --tw-duration: initial;
+          --tw-scale-x: 1;
+          --tw-scale-y: 1;
+          --tw-scale-z: 1;
+          --tw-outline-style: solid;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header style="text-align: center; margin-bottom: 30px;"><svg stroke="currentColor" fill="currentColor"
+      stroke-width="0" viewBox="0 0 496 512" color="#4a5568" height="80" width="80" xmlns="http://www.w3.org/2000/svg"
+      style="color: rgb(74, 85, 104); margin-bottom: 10px;">
+      <path
+        d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z">
+      </path>
+    </svg>
+    <h1 style="font-size: 34px; margin: 0px; color: rgb(45, 55, 72); font-weight: 800;">John Deo</h1>
+    <p style="font-size: 18px; margin: 5px 0px 15px; color: rgb(113, 128, 150);">Professional Title</p>
+    <div style="display: flex; justify-content: center; gap: 15px; font-size: 12px; flex-wrap: wrap;"><span
+        style="display: flex; align-items: center; gap: 5px;"><svg stroke="currentColor" fill="currentColor"
+          stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+          </path>
+        </svg> john.deo@example.com</span><span style="display: flex; align-items: center; gap: 5px;"><svg
+          stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
+          </path>
+        </svg> +1 123-456-7890</span><a href="https://linkedin.com/in/johndeo" target="_blank" rel="noopener noreferrer"
+        style="color: rgb(51, 51, 51); text-decoration: none; display: flex; align-items: center; gap: 5px;"><svg
+          stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
+          </path>
+        </svg> LinkedIn</a></div>
+  </header>
+  <p style="text-align: center; max-width: 80%; margin: 0px auto 30px; line-height: 1.6;">Motivated full-stack web
+    developer with a passion for creating efficient, scalable, and user-friendly web applications. Experienced in
+    JavaScript, React, and Node.js with a solid understanding of software engineering principles.</p>
+  <div style="border-top: 1px solid rgb(226, 232, 240); padding-top: 20px;">
+    <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 40px;">
+      <div>
+        <h2 style="font-size: 22px; font-weight: 800; color: rgb(45, 55, 72); margin-bottom: 15px;">Career Path</h2>
+        <div style="position: relative; margin-top: 20px;">
+          <div
+            style="position: absolute; left: 20px; top: 10px; bottom: 10px; width: 4px; background-color: rgb(203, 213, 224); border-radius: 2px;">
+          </div>
+          <div style="display: flex; margin-bottom: 25px; break-inside: avoid;">
+            <div
+              style="flex-shrink: 0; margin-right: 20px; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background-color: rgb(74, 85, 104); color: white; display: grid; place-items: center;">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+                  width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z">
+                  </path>
+                </svg></div>
+              <p
+                style="writing-mode: vertical-rl; transform: rotate(180deg); margin: 10px 0px 0px; font-size: 11px; color: rgb(113, 128, 150); letter-spacing: 1px;">
+                2022-06 - 2024-05</p>
+            </div>
+            <div style="flex-grow: 1; padding-top: 10px;">
+              <h3 style="margin: 0px; font-size: 17px; font-weight: 700;">Full Stack Developer</h3>
+              <p style="margin: 4px 0px 8px; color: rgb(113, 128, 150); font-style: italic;">Tech Solutions Inc. | New
+                York, NY</p>
+              <div style="font-size: 14px; line-height: 1.6;">
+                <p>Developed and maintained full-stack web applications using React and Node.js. Improved API response
+                  time by 30% and implemented modern UI designs using Tailwind CSS.</p>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; margin-bottom: 25px; break-inside: avoid;">
+            <div
+              style="flex-shrink: 0; margin-right: 20px; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background-color: rgb(74, 85, 104); color: white; display: grid; place-items: center;">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+                  width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z">
+                  </path>
+                </svg></div>
+              <p
+                style="writing-mode: vertical-rl; transform: rotate(180deg); margin: 10px 0px 0px; font-size: 11px; color: rgb(113, 128, 150); letter-spacing: 1px;">
+                2021-01 - 2021-06</p>
+            </div>
+            <div style="flex-grow: 1; padding-top: 10px;">
+              <h3 style="margin: 0px; font-size: 17px; font-weight: 700;">Frontend Developer Intern</h3>
+              <p style="margin: 4px 0px 8px; color: rgb(113, 128, 150); font-style: italic;">Creative Minds Studio |
+                Remote</p>
+              <div style="font-size: 14px; line-height: 1.6;">
+                <p>Built reusable UI components using React and integrated with REST APIs. Improved the mobile
+                  responsiveness of the site by 40%.</p>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; margin-bottom: 25px; break-inside: avoid;">
+            <div
+              style="flex-shrink: 0; margin-right: 20px; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background-color: rgb(74, 85, 104); color: white; display: grid; place-items: center;">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" height="1em"
+                  width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z">
+                  </path>
+                </svg></div>
+              <p
+                style="writing-mode: vertical-rl; transform: rotate(180deg); margin: 10px 0px 0px; font-size: 11px; color: rgb(113, 128, 150); letter-spacing: 1px;">
+                2022-05</p>
+            </div>
+            <div style="flex-grow: 1; padding-top: 10px;">
+              <h3 style="margin: 0px; font-size: 17px; font-weight: 700;">Bachelor of Science</h3>
+              <p style="margin: 4px 0px 8px; color: rgb(113, 128, 150); font-style: italic;">University of California
+              </p>
+              <div style="font-size: 14px; line-height: 1.6;">
+                <p>Computer Science</p>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; margin-bottom: 25px; break-inside: avoid;">
+            <div
+              style="flex-shrink: 0; margin-right: 20px; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background-color: rgb(74, 85, 104); color: white; display: grid; place-items: center;">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" height="1em"
+                  width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z">
+                  </path>
+                </svg></div>
+              <p
+                style="writing-mode: vertical-rl; transform: rotate(180deg); margin: 10px 0px 0px; font-size: 11px; color: rgb(113, 128, 150); letter-spacing: 1px;">
+                2018-06</p>
+            </div>
+            <div style="flex-grow: 1; padding-top: 10px;">
+              <h3 style="margin: 0px; font-size: 17px; font-weight: 700;">High School Diploma</h3>
+              <p style="margin: 4px 0px 8px; color: rgb(113, 128, 150); font-style: italic;">St. Xavier's High School
+              </p>
+              <div style="font-size: 14px; line-height: 1.6;">
+                <p>Science Stream</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <section style="break-inside: avoid; margin-bottom: 30px;">
+          <h2
+            style="font-size: 22px; font-weight: 800; color: rgb(45, 55, 72); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+              width="1em" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z">
+              </path>
+            </svg> Skills</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;"><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">JavaScript</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">React</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Node.js</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">MongoDB</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">HTML</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">CSS</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Git</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">REST
+              APIs</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Express.js</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Redux</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">TypeScript</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Bootstrap</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Tailwind
+              CSS</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">GraphQL</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Jest</span><span
+              style="background-color: rgb(237, 242, 247); color: rgb(74, 85, 104); font-weight: 600; padding: 5px 12px; border-radius: 6px;">Firebase</span>
+          </div>
+        </section>
+        <section style="break-inside: avoid; margin-bottom: 30px;">
+          <h2
+            style="font-size: 22px; font-weight: 800; color: rgb(45, 55, 72); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" height="1em"
+              width="1em" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z">
+              </path>
+            </svg> Projects</h2>
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin: 0px 0px 5px; font-size: 15px; font-weight: bold;"><a href="https://johndeo.dev"
+                target="_blank" rel="noopener noreferrer"
+                style="color: rgb(45, 55, 72); text-decoration: none;">Portfolio Website</a></h4>
+            <p style="margin: 0px; font-size: 14px; color: rgb(73, 80, 87);">Designed and developed a responsive
+              personal portfolio using React, showcasing projects, blogs, and contact form integration.</p>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin: 0px 0px 5px; font-size: 15px; font-weight: bold;"><a
+                href="https://github.com/johndeo/task-manager" target="_blank" rel="noopener noreferrer"
+                style="color: rgb(45, 55, 72); text-decoration: none;">Task Manager App</a></h4>
+            <p style="margin: 0px; font-size: 14px; color: rgb(73, 80, 87);">Built a full-stack task manager using MERN
+              stack with user authentication and task tracking features.</p>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin: 0px 0px 5px; font-size: 15px; font-weight: bold;"><a
+                href="https://github.com/johndeo/e-commerce" target="_blank" rel="noopener noreferrer"
+                style="color: rgb(45, 55, 72); text-decoration: none;">E-Commerce Store</a></h4>
+            <p style="margin: 0px; font-size: 14px; color: rgb(73, 80, 87);">Created a complete e-commerce website with
+              cart, payment gateway, and admin dashboard using React, Redux, and Firebase.</p>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin: 0px 0px 5px; font-size: 15px; font-weight: bold;"><a
+                href="https://github.com/johndeo/chat-app" target="_blank" rel="noopener noreferrer"
+                style="color: rgb(45, 55, 72); text-decoration: none;">Chat Application</a></h4>
+            <p style="margin: 0px; font-size: 14px; color: rgb(73, 80, 87);">Developed a real-time chat app with
+              Socket.IO, including private messaging, typing indicators, and multi-room support.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

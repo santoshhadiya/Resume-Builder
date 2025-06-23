@@ -47,7 +47,8 @@ const TechFolioTheme = ({ formData }) => {
   // --- Main Component Render ---
   return (
     <div style={pageStyle}  id='resume-preview'>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #30363d', paddingBottom: '15px', flexWrap: 'wrap', gap: '15px' }}>
+      <div style={{padding:'30px', height:'100%', width:'100%', backgroundColor: '#0d1117', color: '#c9d1d9',}}>
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #30363d', paddingBottom: '15px', flexWrap: 'wrap', gap: '15px' }}>
         <div>
           <h1 style={{ fontSize: '28px', margin: 0, color: '#58a6ff' }}>{formData.name || "Your Name"}</h1>
           <p style={{ margin: '5px 0 0 0', color: '#8b949e', fontSize: '16px' }}>// {formData.title || "Professional Title"}</p>
@@ -72,7 +73,7 @@ const TechFolioTheme = ({ formData }) => {
           )}
 
           {formData.experience && formData.experience.length > 0 && (
-              <section style={{ marginBottom: '25px', pageBreakInside: 'avoid' }}>
+              <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
                 <h2 style={sectionTitleStyle}><span style={{color: '#f778ba'}}>&lt;</span>experience<span style={{color: '#f778ba'}}>&gt;</span></h2>
                 <div style={sectionWrapperStyle}>
                   {formData.experience.map(exp => (
@@ -91,7 +92,7 @@ const TechFolioTheme = ({ formData }) => {
           )}
           
           {formData.skills && formData.skills.length > 0 && (
-              <section style={{ marginBottom: '25px', pageBreakInside: 'avoid' }}>
+              <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
                 <h2 style={sectionTitleStyle}><span style={{color: '#f778ba'}}>&lt;</span>skills<span style={{color: '#f778ba'}}>&gt;</span></h2>
                 <div style={sectionWrapperStyle}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
@@ -107,7 +108,7 @@ const TechFolioTheme = ({ formData }) => {
           )}
 
           {formData.projects && formData.projects.length > 0 && (
-              <section style={{ marginBottom: '25px', pageBreakInside: 'avoid' }}>
+              <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid'  */}}>
                 <h2 style={sectionTitleStyle}><span style={{color: '#f778ba'}}>&lt;</span>projects<span style={{color: '#f778ba'}}>&gt;</span></h2>
                 <div style={sectionWrapperStyle}>
                   {formData.projects.map(proj => (
@@ -124,6 +125,7 @@ const TechFolioTheme = ({ formData }) => {
               </section>
           )}
       </main>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,29 @@
+@media print {
+  body {
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+    background: white;
+    overflow: hidden;
+  }
+  .resume-container {
+    width: 100%;
+    padding: 10mm;
+    box-sizing: border-box;
+  }
+  .no-print {
+    display: none !important; /* Hide buttons in PDF */
+  }
+  #resume-preview {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+}

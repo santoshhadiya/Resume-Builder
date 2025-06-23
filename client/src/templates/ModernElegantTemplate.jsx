@@ -155,7 +155,11 @@ const ModernElegantTemplate = ({ formData }) => {
 
   return (
     <div id="resume-preview" style={pageStyle}>
-      {/* Header */}
+     <div style={{
+                padding: '30px',
+                minHeight: '297mm',
+            }}>
+               {/* Header */}
       <div style={headerStyle}>
         <div>
           <h1 style={nameStyle}>{formData.name || "Your Name"}</h1>
@@ -259,9 +263,10 @@ const ModernElegantTemplate = ({ formData }) => {
 
         {/* Right Column */}
         <div style={rightColumnStyle}>
-          {/* Work Experience */}
+         <div style={{paddingRight:'20px'}}>
+           {/* Work Experience */}
           {formData.experience && formData.experience.length > 0 && (
-            <div style={sectionStyle}>
+            <div style={sectionStyle} >
               <h2 style={sectionTitleStyle}><FaBriefcase /> EXPERIENCE</h2>
               {formData.experience.map(exp => (
                 <div key={exp.id} style={itemStyle}>
@@ -328,8 +333,10 @@ const ModernElegantTemplate = ({ formData }) => {
               </div>
             </div>
           )}
+         </div>
         </div>
       </div>
+            </div>
     </div>
   );
 };

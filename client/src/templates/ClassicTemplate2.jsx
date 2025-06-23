@@ -73,7 +73,8 @@ function ClassicTemplate2({ formData }) {
 
     const rightColumnStyle = {
         borderLeft: '1px solid #ecf0f1',
-        paddingLeft: '15px'
+        paddingLeft: '15px',
+        paddingRight: '20px',
     };
 
     const experienceItemStyle = {
@@ -133,7 +134,11 @@ function ClassicTemplate2({ formData }) {
 
     return (
         <div id="resume-preview" style={pageStyle}>
-            {/* Header */}
+            <div style={{
+                padding: '30px',
+                minHeight: '297mm',
+            }}>
+                 {/* Header */}
             <div style={headerStyle}>
                 <div>
                     <h1 style={nameStyle}>{formData.name || "Your Name"}</h1>
@@ -259,6 +264,7 @@ function ClassicTemplate2({ formData }) {
                         </div>
                     )}
                 </div>
+            </div>
             </div>
         </div>
     );

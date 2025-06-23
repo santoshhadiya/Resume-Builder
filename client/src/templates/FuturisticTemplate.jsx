@@ -76,13 +76,15 @@ const FuturisticTemplate = ({ formData }) => {
 
   // Right column - experience and education
   const rightColumnStyle = {
-    paddingLeft: '20px'
+    paddingLeft: '10px',
+    paddingRight:'20px'
   };
 
   // Section styles
   const sectionStyle = {
     marginBottom: '25px',
-    pageBreakInside: 'avoid'
+   /*  pageBreakInside: 'avoid' */
+  
   };
 
   const sectionTitleStyle = {
@@ -204,7 +206,8 @@ const FuturisticTemplate = ({ formData }) => {
 
   return (
     <div id="resume-preview" style={pageStyle}>
-      {/* Header with accent */}
+     <div style={{padding:'20px'}}>
+       {/* Header with accent */}
       <div style={headerStyle}>
         <div style={accentBlockStyle}></div>
         <h1 style={nameStyle}>{formData.name || "Your Name"}</h1>
@@ -390,6 +393,7 @@ const FuturisticTemplate = ({ formData }) => {
           )}
         </div>
       </div>
+     </div>
     </div>
   );
 };

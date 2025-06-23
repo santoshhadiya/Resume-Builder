@@ -9,7 +9,7 @@ function App() {
   const [currentResumeId, setCurrentResumeId] = useState(null);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const initialFormDataORG = {
+  const initialFormData = {
     id: null,
     name: "",
     email: "",
@@ -27,7 +27,7 @@ function App() {
     languages: [],
   };
 
- const initialFormData = {
+ /* const initialFormData = {
   id: 1,
   name: "John Deo",
   email: "john.deo@example.com",
@@ -134,7 +134,7 @@ function App() {
       proficiency: "Intermediate"
     }
   ]
-};
+}; */
 
 
   const [formData, setFormData] = useState(initialFormData);
@@ -295,7 +295,7 @@ const handleDownloadPDF = async () => {
               margin: 0;
             }
             body {
-              margin: 0;
+              margin: 0px;
               padding: 0;
               -webkit-print-color-adjust: exact; /* Ensures background colors print */
               print-color-adjust: exact;

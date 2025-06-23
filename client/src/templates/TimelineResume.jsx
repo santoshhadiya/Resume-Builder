@@ -28,8 +28,9 @@ const TimelineResume = ({ formData }) => {
   // --- Main Component Render ---
   return (
     <div style={pageStyle}  id='resume-preview'>
-      <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <FaUserCircle size={80} color="#4a5568" style={{ marginBottom: '10px' }} />
+     <div style={{padding:'30px', width: '100%',
+    minHeight: '100%', color: '#333',}}> <header style={{ textAlign: 'center', marginBottom: '30px' }}>
+         
           <h1 style={{ fontSize: '34px', margin: 0, color: '#2d3748', fontWeight: 800 }}>{formData.name || "Your Name"}</h1>
           <p style={{ fontSize: '18px', margin: '5px 0 15px 0', color: '#718096' }}>{formData.title || "Professional Title"}</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', fontSize: '12px', flexWrap: 'wrap' }}>
@@ -60,7 +61,7 @@ const TimelineResume = ({ formData }) => {
                       
                       {/* Timeline Items */}
                       {formData.experience && formData.experience.map(exp => (
-                          <div key={exp.id} style={{ display: 'flex', marginBottom: '25px', pageBreakInside: 'avoid' }}>
+                          <div key={exp.id} style={{ display: 'flex', marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
                               <div style={{ flexShrink: 0, marginRight: '20px', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                   <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#4a5568', color: 'white', display: 'grid', placeItems: 'center' }}><FaBriefcase /></div>
                                   <p style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', margin: '10px 0 0 0', fontSize: '11px', color: '#718096', letterSpacing: '1px' }}>{exp.startDate} - {exp.endDate}</p>
@@ -73,7 +74,7 @@ const TimelineResume = ({ formData }) => {
                           </div>
                       ))}
                       {formData.education && formData.education.map(edu => (
-                          <div key={edu.id} style={{ display: 'flex', marginBottom: '25px', pageBreakInside: 'avoid' }}>
+                          <div key={edu.id} style={{ display: 'flex', marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
                               <div style={{ flexShrink: 0, marginRight: '20px', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#4a5568', color: 'white', display: 'grid', placeItems: 'center' }}><FaGraduationCap /></div>
                                 <p style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', margin: '10px 0 0 0', fontSize: '11px', color: '#718096', letterSpacing: '1px' }}>{edu.graduationDate}</p>
@@ -88,7 +89,7 @@ const TimelineResume = ({ formData }) => {
                   </div>
               </div>
               <div>
-                   {formData.skills && formData.skills.length > 0 && <section style={{ pageBreakInside: 'avoid', marginBottom: '30px' }}>
+                   {formData.skills && formData.skills.length > 0 && <section style={{ /* pageBreakInside: 'avoid', */ marginBottom: '30px' }}>
                       <h2 style={sectionTitleStyle}><FaTools /> Skills</h2>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                           {formData.skills.map(skill => (
@@ -98,7 +99,7 @@ const TimelineResume = ({ formData }) => {
                           ))}
                       </div>
                   </section>}
-                  {formData.projects && formData.projects.length > 0 && <section style={{ pageBreakInside: 'avoid', marginBottom: '30px' }}>
+                  {formData.projects && formData.projects.length > 0 && <section style={{ /* pageBreakInside: 'avoid', */ marginBottom: '30px' }}>
                       <h2 style={sectionTitleStyle}><FaLightbulb /> Projects</h2>
                       {formData.projects.map(proj => (
                           <div key={proj.id} style={{marginBottom: '15px'}}>
@@ -111,7 +112,7 @@ const TimelineResume = ({ formData }) => {
                   </section>}
               </div>
           </div>
-      </div>
+      </div></div>
     </div>
   );
 };

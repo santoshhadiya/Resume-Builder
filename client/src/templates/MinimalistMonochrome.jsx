@@ -28,7 +28,8 @@ const MinimalistMonochrome = ({ formData }) => {
   // --- Main Component Render ---
   return (
     <div style={pageStyle}  id='resume-preview'>
-      <header style={{ textAlign: 'center', marginBottom: '40px' }}>
+      <div style={{padding:'20px'}}>
+        <header style={{ textAlign: 'center', marginBottom: '40px' }}>
         <h1 style={{ fontSize: '36px', margin: '0 0 5px 0', letterSpacing: '2px', fontWeight: '300' }}>{formData.name || "Your Name"}</h1>
         <p style={{ fontSize: '18px', margin: 0, color: '#555' }}>{formData.title || "Professional Title"}</p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '15px', fontSize: '12px', color: '#777', flexWrap: 'wrap' }}>
@@ -44,7 +45,7 @@ const MinimalistMonochrome = ({ formData }) => {
       </header>
       
       {formData.summary && (
-        <section style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
+        <section style={{ marginBottom: '30px', /* pageBreakInside: 'avoid' */ }}>
           <h2 style={sectionTitleStyle}>Profile</h2>
           <p style={{ fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
             {formData.summary}
@@ -53,7 +54,7 @@ const MinimalistMonochrome = ({ formData }) => {
       )}
 
       {formData.experience && formData.experience.length > 0 && (
-        <section style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
+        <section style={{ marginBottom: '30px',/*  pageBreakInside: 'avoid'  */}}>
           <h2 style={sectionTitleStyle}>Experience</h2>
           {formData.experience.map(exp => (
             <div key={exp.id} style={{ marginBottom: '20px' }}>
@@ -69,7 +70,7 @@ const MinimalistMonochrome = ({ formData }) => {
       )}
 
       {formData.projects && formData.projects.length > 0 && (
-         <section style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
+         <section style={{ marginBottom: '30px',/*  pageBreakInside: 'avoid' */ }}>
           <h2 style={sectionTitleStyle}>Projects</h2>
           {formData.projects.map(proj => (
             <div key={proj.id} style={{ marginBottom: '20px' }}>
@@ -84,7 +85,7 @@ const MinimalistMonochrome = ({ formData }) => {
       )}
       
       {formData.education && formData.education.length > 0 && (
-          <section style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
+          <section style={{ marginBottom: '30px', /* pageBreakInside: 'avoid' */ }}>
             <h2 style={sectionTitleStyle}>Education</h2>
             {formData.education.map(edu => (
               <div key={edu.id} style={{ marginBottom: '20px' }}>
@@ -100,7 +101,7 @@ const MinimalistMonochrome = ({ formData }) => {
       )}
       
       {formData.skills && formData.skills.length > 0 && (
-        <section style={{ marginBottom: '30px', pageBreakInside: 'avoid' }}>
+        <section style={{ marginBottom: '30px', /* pageBreakInside: 'avoid' */ }}>
           <h2 style={sectionTitleStyle}>Skills</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {formData.skills.map((skill, index) => (
@@ -117,6 +118,7 @@ const MinimalistMonochrome = ({ formData }) => {
           </div>
         </section>
       )}
+      </div>
     </div>
   );
 };
