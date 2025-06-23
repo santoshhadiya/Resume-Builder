@@ -1,0 +1,444 @@
+//this is for deshbord
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#111418]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_535)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">ResumeCraft</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6NUxKxvCVAu8Shr81u-R2fpp-swcEhCbWrmsetjjN7Ea5aDYVfOQZeICtcu3lBSWC4D3F1eaiLz7RDyqlRjtIiOOA2JHkB9H2037qP6Ersb5TycFKjtyInuSvOEHY6T9KHGBrMWDrrDHXG934Aq35ucWhv37hGNhtYi5CYighNPnmuSHgM6YMNx5iupjPhJx630UC5obze5IG1a0FBJqMhZbXC5eFm9p2_WWQ2Afojok04rvgPV7Q1mvQFMUvUz91IOedrAsYRjg");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <p class="text-[#111418] tracking-light text-[32px] font-bold leading-tight">Welcome back, Sarah!</p>
+                <p class="text-[#60758a] text-sm font-normal leading-normal">Your profile snapshot</p>
+              </div>
+            </div>
+            <div class="flex p-4 @container">
+              <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+                <div class="flex gap-4">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiw04kyMGBrbFKn0ghTAcmCUgy2Y_deur_VsVAmGVDIn8lk_qD_X92LEuEGyVdhgHhZVNp2U11mPC11Yq5m6ucSLrE_KEow60fjNLFmNV3sFNHVWOmS0bN8dzpVfwOwp-_lEMGsk1L16xU_vxvrvMNxLzgAuUXdxNuCNRWC16dKbD40p6dq2yg8mG_h8i9fMU2f_XQFboOh35tyPsbsgquGYP_bekd9wqanxbQAsL_bbjJJmnU1SMVT232aQVx0CMfp59s9ut7ymQ");'
+                  ></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]">Sarah Miller</p>
+                    <p class="text-[#60758a] text-base font-normal leading-normal">Software Engineer</p>
+                    <p class="text-[#60758a] text-base font-normal leading-normal">San Francisco, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Resume Templates</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqHs9tfA6kDFISHPPy1VlMoADKIVNx5bxd1w5lH2Gqm2hFaLJ8upoX2e9nfJC2A4OrbLMVx4g7Yn5noaszHsbHOHtBRYuCJnAaT9F1YLMF2H_RqEF8SpDE7enWmkrtuEuO5FFflQLJJA9kRk2JLtf5nFPzF1ZIhWXHq4iPg36CDUc5N8bgdKSNb9M4czXAJs0ABa6MKf2X_HDBf4r8fc7mAbDbM37hVOrM9vx8Og4UUyNfHV6tF1O5swQ3JmeT71dp2qKDgBB9QFk");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Modern</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDULrNvCWu44uyZugAV6ZKIh0bW7jneLqX0dACr4kbth5yyvxGPcM5ipl4zI1ZDMXJTm_kz-mTHnoA702j-M0pT1XxXGDWldj5FgMcTpUTZ-tSc6bJC0O4AZ58CbXxOLetPfXByDC40MO6riLtLeuycm6NOIF5Y5VMK_qI9lWwEnUZP0o3k__827NiMquBuqxkyKv9P93CQavlouSaPmDgH0vp6P3c9bIribkgQIqbR7JDD-FQiDZdTL1tguzlZ7hj9ZZSsJrAs4L0");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Classic</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJFQeGjADxvVpykI8uC2v1DKjTId1VwAgGSd0sTDmnwV5E29347MScRfoI2BFSXOmB8lCHOap8gtk0Dli4qf-K5O28T6h3Kil_66AI4UXktOfHMXDtwYsMZ0fbCTxFUCk1ibYc_hLNrgy8DPvaMnvBoUIwIW94h8Yw3VIQ7NjSY_TWk6Xvc8zt9S_k6vQI1j1XeoRQzvqHIADdrDOzlfdE1K26dSa-Z_MJu3lKmaVgUJOPV9AKN9rzUyQ3yNgpHuiNlcnfrJwVNa0");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Creative</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzeiCwrfsYVFkQZ_EBtkaemOihec8CsninXRp6SbmQztlKv2JoQ1GoC_y4sEOdw9Kl8OdniSVR4JMJ0hrhtv_CBYsEbNPClPmnV9yHfMuSgzs-OdLBVR3uDmZcqWKQ5L1rktryyt4B1GxyNOElMc1-Ut04Wh0btWPDdN0VKUNfG2h3EZVluUKFXRm6RjTrNZo6EDKTZQQjT3NmzJdkxKxAKIO2SxxIti9AfO8l1mvPLfpXSQoheI5n50xTIrnM4NR3IT7o6R6sAd0");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Minimalist</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmpfIriJbNyO2Exkz3vtv7mmuItiKP5yuaNF32PK_jP-BLGgjQ87UWZwuyTazkZwTso1962VIpPwD2LHsfoQSBwnHcpVTEIUReMiGCa8oOGsYoHubMmSfJhgwL9SGQI8xk5IgjDuhc3h8CZFQYrjc7jn-_TGuJt200-8PHP77g0EUIMTRyH84doh5Qo7Zlt6gI4MQfZdw8Pf1ZoMfU_zgeitzL_RQuz_IhX59qJidOEIYOD2wjWGcBgRVJS71jc-BHnQmfSakivBk");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Professional</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAtxARUg_4SOkbeuLwMw_5sq5l41IlNXuZRg6-CwrwXr083RB8Qj7Bp5rhEuB0wyDXWVFwnG9gVbuxsujtrcuRTu1s7FjtaNSygxHgj1A_rhlnPh7uYoP3-ot0IwoqQ2LDGBrbJdBPNhjkNRHTLKserZl0PrAofbtXNHALibF0D3-3JQvTaETQpTYg_Ctri3hrreC2C6jBFuVYgoTK9NbN_CdGlajxEGI9mMXcYJ5REjFi5YOcfY3_a2qGTva2Lmqabr307_CDtEo");'
+                ></div>
+                <p class="text-[#111418] text-base font-medium leading-normal">Academic</p>
+              </div>
+            </div>
+            <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">My Resumes</h2>
+            <div class="px-4 py-3 @container">
+              <div class="flex overflow-hidden rounded-lg border border-[#dbe0e6] bg-white">
+                <table class="flex-1">
+                  <thead>
+                    <tr class="bg-white">
+                      <th class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-120 px-4 py-3 text-left text-[#111418] w-[400px] text-sm font-medium leading-normal">Name</th>
+                      <th class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-240 px-4 py-3 text-left text-[#111418] w-[400px] text-sm font-medium leading-normal">
+                        Last Edited
+                      </th>
+                      <th class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-360 px-4 py-3 text-left text-[#111418] w-60 text-[#60758a] text-sm font-medium leading-normal">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-t border-t-[#dbe0e6]">
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Software Engineer Resume
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-240 h-[72px] px-4 py-2 w-[400px] text-[#60758a] text-sm font-normal leading-normal">
+                        2023-08-15
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-360 h-[72px] px-4 py-2 w-60 text-[#60758a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Preview | Edit | Delete
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dbe0e6]">
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Project Manager Resume
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-240 h-[72px] px-4 py-2 w-[400px] text-[#60758a] text-sm font-normal leading-normal">
+                        2023-07-22
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-360 h-[72px] px-4 py-2 w-60 text-[#60758a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Preview | Edit | Delete
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dbe0e6]">
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Marketing Specialist Resume
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-240 h-[72px] px-4 py-2 w-[400px] text-[#60758a] text-sm font-normal leading-normal">
+                        2023-06-10
+                      </td>
+                      <td class="table-0b691aec-2a2b-4663-95ff-0d743f676339-column-360 h-[72px] px-4 py-2 w-60 text-[#60758a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Preview | Edit | Delete
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <style>
+                          @container(max-width:120px){.table-0b691aec-2a2b-4663-95ff-0d743f676339-column-120{display: none;}}
+                @container(max-width:240px){.table-0b691aec-2a2b-4663-95ff-0d743f676339-column-240{display: none;}}
+                @container(max-width:360px){.table-0b691aec-2a2b-4663-95ff-0d743f676339-column-360{display: none;}}
+              </style>
+            </div>
+            <div class="flex px-4 py-3 justify-end">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-[#0c7ff2] text-white text-base font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Create New Resume</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+//this is form page
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#111418]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_535)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">ResumeCraft</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Templates</a>
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">How it works</a>
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Pricing</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">New Resume</span>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDy9QTA5FQ2vqeAemBfad7TG3u2i8KJR80k7tUkdJk1_ZRF5h6Utk4el5XmU_YERHmYTsaB99icIku9JDmsOgF-Ay8Kyny6ffy_xIiZaNk4npScsz15XXGhuPPwUbfZvID2Nm6VEivPDzhEJHlTF8rKUxvCqBH3YzJx2V88IyhVJekecDfX9l7m76VbTG5dw_NCzJ8BfEwfPCjJ9Cc1YxDHJ7G_ta9-boWEoVazMgY_-Iub7q5R-NNYr1ShAO4ZdN0Ddzfuif4Nlqk");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between"><p class="text-[#111418] text-base font-medium leading-normal">Step 1/5</p></div>
+              <div class="rounded bg-[#dbe0e6]"><div class="h-2 rounded bg-[#111418]" style="width: 20%;"></div></div>
+              <p class="text-[#60758a] text-sm font-normal leading-normal">Personal Info</p>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">First Name</p>
+                <input
+                  placeholder="Enter your first name"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">Last Name</p>
+                <input
+                  placeholder="Enter your last name"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">Email</p>
+                <input
+                  placeholder="Enter your email"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">Phone</p>
+                <input
+                  placeholder="Enter your phone number"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">Location</p>
+                <input
+                  placeholder="Enter your location"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">LinkedIn Profile URL</p>
+                <input
+                  placeholder="Enter your LinkedIn profile URL"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <p class="text-[#111418] text-base font-medium leading-normal pb-2">Portfolio URL</p>
+                <input
+                  placeholder="Enter your portfolio URL"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f5] focus:border-none h-14 placeholder:text-[#60758a] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex justify-stretch">
+              <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-between">
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Back</span>
+                </button>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+//this is previe and download page
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#111418]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_535)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">ResumeCraft</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">My Resume</a>
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Templates</a>
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Examples</a>
+              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Pricing</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">New Resume</span>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKGRqtP2zlIwx_hD30nma45iH1ss8tZ7mDPS5l_v7P77RmhVp80BcOaOqhogqU2ZoIndmK3rIKJfE92L8iB83bNROdZ8v6W9RGXcuH6YgV-ED7qfQjnJgKmwpGVwP25Ko0oaG1ycJml7ZlvXuT8xxjkUN_TBzd5nzOi_KHIXKFhm4-mLWoZEPHOsQrRqS52h2wYcyXC-bnOAJnkaKcCdOlUWRBqTC6vWe8CfrTyhBE79ZxPNWAMfgMCVQOynHTTYgOb29uWqhdOY4");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex min-w-72 flex-col gap-3">
+                <p class="text-[#111418] tracking-light text-[32px] font-bold leading-tight">Resume Preview</p>
+                <p class="text-[#60758a] text-sm font-normal leading-normal">Review your resume and make any final adjustments before downloading.</p>
+              </div>
+            </div>
+            <div class="p-4 @container">
+              <div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJ7EovFZ_nG4TApEkNVU8qQ3_QZAhBoVtYZs7NFwYV5bnqh3QlLFlzCmgV1ewZBYuPx-NnCrItVn-omcb7qnd5LN4IhgcPKsrMUqPhpkkXOuYFqMyyvLeZ55WZoMyvlfsgWb8gaUo0LxGTlaPBQTxKqOBX36n9H7cB1c_qutbif9FIthJOTgS674aVLvEoiuB9kpSd6YI-t8Oo6CvLoTOyUI6VSVKNwITK947XiEGT5AQCwOQkKJdZoqiubf9Mnq6-fw0ne7AsWQk");'
+                ></div>
+                <div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-4 @xl:px-4">
+                  <p class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">Template: Modern</p>
+                  <div class="flex items-end gap-3 justify-between">
+                    <p class="text-[#60758a] text-base font-normal leading-normal">
+                      This template is perfect for showcasing your skills and experience in a clear and concise manner.
+                    </p>
+                    <button
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#0c7ff2] text-white text-sm font-medium leading-normal"
+                    >
+                      <span class="truncate">Change Template</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex px-4 py-3 justify-start">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Edit Again</span>
+              </button>
+            </div>
+            <div class="flex px-4 py-3 justify-start">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Download PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
