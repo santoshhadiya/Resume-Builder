@@ -11,7 +11,7 @@ function ModernTemplate({ formData }) {
         <div id="resume-preview" className="flex font-sans w-[210mm] min-h-[297mm] mx-auto shadow-lg">
            <div style={{display:'flex', minHeight:'287mm'}}>
              {/* Left Column */}
-            <div className={leftColClasses} style={{height:'100vh'}} >
+            <div className={leftColClasses} style={{height:'297mm'}} >
                 <header className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-white">{formData.name || "Your Name"}</h1>
                 </header>
@@ -24,15 +24,18 @@ function ModernTemplate({ formData }) {
                         <a href={formData.linkedin} className="text-sm text-blue-300 hover:underline">LinkedIn Profile</a>
                     </section>
 
-                    {formData.skills && formData.skills.length > 0 && (
-                        <section>
-                            <h2 className="text-gray-300 text-lg font-semibold uppercase tracking-wider">Skills</h2>
-                             <div className="border-t-2 border-gray-500 my-2"></div>
-                            <ul className="list-disc list-inside text-sm">
-                                {formData.skills.map((skill, index) => <li key={index}>{skill}</li>)}
-                            </ul>
-                        </section>
-                    )}
+                    {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
+    <section>
+        <h2 className="text-gray-300 text-lg font-semibold uppercase tracking-wider">Skills</h2>
+        <div className="border-t-2 border-gray-500 my-2"></div>
+        <ul className="list-disc list-inside text-sm">
+            {formData.skills.map(skill => skill.name && (
+                <li key={skill.id}>{skill.name}</li>
+            ))}
+        </ul>
+    </section>
+)}
+
 
                     {formData.education && formData.education.length > 0 && (
                         <section>

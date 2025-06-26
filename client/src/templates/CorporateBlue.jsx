@@ -16,7 +16,7 @@ const CorporateBlue = ({ formData }) => {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        padding: '10mm',
+      
         boxSizing: 'border-box'
     };
 
@@ -73,7 +73,7 @@ const CorporateBlue = ({ formData }) => {
                         {formData.name || "Your Name"}
                     </h1>
                     <p style={{ fontSize: '18px', margin: '5px 0 0', fontWeight: '300', opacity: 0.9 }}>
-                        {formData.title || "Professional Title"}
+                        {formData.professionalTitle || "Professional Title"}
                     </p>
                 </header>
 
@@ -153,22 +153,18 @@ const CorporateBlue = ({ formData }) => {
 
                     {/* RIGHT COLUMN */}
                     <div>
-                        {formData.skills?.length > 0 && (
+                        {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
                             <section style={sectionStyle}>
-                                <h2 style={sectionTitleStyle}><FaCogs size={18} /> Core Skills</h2>
+                                <h3 style={sectionTitleStyle}>Core Skills</h3>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                                    {formData.skills.map(skill => (
-                                        <span key={skill} style={{
-                                            backgroundColor: '#e3f2fd',
-                                            color: '#0d47a1',
-                                            padding: '5px 10px',
-                                            borderRadius: '4px',
-                                            fontSize: '13px'
-                                        }}>{skill}</span>
+                                    {formData.skills.map(skill => skill.name && (
+                                        <span key={skill.id}>{skill.name}</span>
                                     ))}
                                 </div>
                             </section>
                         )}
+
+
 
                         {formData.education?.length > 0 && (
                             <section style={sectionStyle}>

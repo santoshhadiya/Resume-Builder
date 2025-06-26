@@ -11,6 +11,11 @@ import MinimalistMonochrome from '../templates/MinimalistMonochrome';
 import TechFolioTheme from '../templates/TechFolioTheme';
 import CorporateBlue from '../templates/CorporateBlue';
 import TimelineResume from '../templates/TimelineResume';
+import ProfessionalTheme from '../templates/ProfessionalTheme';
+import EduMatrix from '../templates/EduMatrix'; 
+import DivineTheme from '../templates/DivineTheme'; 
+import CelestialResumeTheme from '../templates/CelestialResumeTheme'; // Assuming you have this template
+
 
 const templates = {
   'Classic': ClassicTemplate,
@@ -24,7 +29,10 @@ const templates = {
    'TechFolioTheme':TechFolioTheme,
    'CorporateBlue':CorporateBlue,
    'TimelineResume':TimelineResume,
-  // Add other templates here as you create them
+   'ProfessionalTheme':ProfessionalTheme,
+   'EduMatrix':EduMatrix,
+   'DivineTheme': DivineTheme,
+   'CelestialResumeTheme': CelestialResumeTheme, // Add your new template here
 };
 
 function PreviewPage({ formData }) {

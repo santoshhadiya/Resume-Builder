@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, 
-  FaLinkedin, FaGithub, FaGlobe, 
-  FaBriefcase, FaGraduationCap, 
+import {
+  FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt,
+  FaLinkedin, FaGithub, FaGlobe,
+  FaBriefcase, FaGraduationCap,
   FaCode, FaTools, FaProjectDiagram, FaCertificate
 } from 'react-icons/fa';
 
@@ -12,7 +12,7 @@ const ModernElegantTemplate = ({ formData }) => {
     width: '210mm',
     minHeight: '297mm',
     margin: '0 auto',
-    padding: '15mm',
+  
     backgroundColor: '#ffffff',
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
     fontFamily: "'Roboto', sans-serif",
@@ -59,12 +59,6 @@ const ModernElegantTemplate = ({ formData }) => {
     color: '#4a5568'
   };
 
-  // Main content layout
-  const mainContentStyle = {
-    display: 'grid',
-    gridTemplateColumns: '30% 70%',
-    gap: '25px'
-  };
 
   // Left column styles
   const leftColumnStyle = {
@@ -76,7 +70,9 @@ const ModernElegantTemplate = ({ formData }) => {
   // Right column styles
   const rightColumnStyle = {
     borderLeft: '1px solid #e2e8f0',
-    paddingLeft: '20px'
+   
+    paddingLeft: '20px',
+    height: '92.5%',
   };
 
   // Section styles
@@ -155,188 +151,197 @@ const ModernElegantTemplate = ({ formData }) => {
 
   return (
     <div id="resume-preview" style={pageStyle}>
-     <div style={{
-                padding: '30px',
-                minHeight: '297mm',
-            }}>
-               {/* Header */}
-      <div style={headerStyle}>
-        <div>
-          <h1 style={nameStyle}>{formData.name || "Your Name"}</h1>
-          <p style={titleStyle}>{formData.title || "Professional Title"}</p>
-        </div>
+      <div style={{
+        padding: '30px',
+        height: '297mm',
         
-        <div style={contactInfoStyle}>
-          {formData.email && (
-            <div style={contactItemStyle}>
-              <FaEnvelope size={12} />
-              <span>{formData.email}</span>
-            </div>
-          )}
-          {formData.phone && (
-            <div style={contactItemStyle}>
-              <FaPhone size={12} />
-              <span>{formData.phone}</span>
-            </div>
-          )}
-          {formData.location && (
-            <div style={contactItemStyle}>
-              <FaMapMarkerAlt size={12} />
-              <span>{formData.location}</span>
-            </div>
-          )}
-          {formData.linkedin && (
-            <div style={contactItemStyle}>
-              <FaLinkedin size={12} />
-              <a href={formData.linkedin} target="_blank" rel="noopener" style={{ color: '#4a5568', textDecoration: 'none' }}>
-                LinkedIn
-              </a>
-            </div>
-          )}
-        </div>
-      </div>
+         overflow:'hidden'
+      }}>
+        {/* Header */}
+        <div style={headerStyle}>
+          <div>
+            <h1 style={nameStyle}>{formData.name || "Your Name"}</h1>
+            <p style={titleStyle}>{formData.title || "Professional Title"}</p>
+          </div>
 
-      {/* Main Content */}
-      <div style={mainContentStyle}>
-        {/* Left Column */}
-        <div style={leftColumnStyle}>
-          {/* Profile */}
-          {formData.summary && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaUser /> PROFILE</h2>
-              <p style={itemDescriptionStyle}>
-                {truncateContent(formData.summary, 200)}
-              </p>
-            </div>
-          )}
-
-          {/* Skills */}
-          {formData.skills && formData.skills.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaTools /> SKILLS</h2>
-              <div style={skillsGridStyle}>
-                {formData.skills.map((skill, index) => (
-                  <div key={index} style={skillItemStyle}>
-                    <FaCode size={10} />
-                    <span>{skill}</span>
-                  </div>
-                ))}
+          <div style={contactInfoStyle}>
+            {formData.email && (
+              <div style={contactItemStyle}>
+                <FaEnvelope size={12} />
+                <span>{formData.email}</span>
               </div>
-            </div>
-          )}
-
-          {/* Education */}
-          {formData.education && formData.education.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaGraduationCap /> EDUCATION</h2>
-              {formData.education.map(edu => (
-                <div key={edu.id} style={itemStyle}>
-                  <div style={itemHeaderStyle}>
-                    <div style={itemTitleStyle}>{edu.degree}</div>
-                    {edu.graduationDate && (
-                      <div style={itemDateStyle}>{edu.graduationDate}</div>
-                    )}
-                  </div>
-                  <div style={itemSubtitleStyle}>{edu.institution}</div>
-                  {edu.major && (
-                    <div style={itemDescriptionStyle}>{edu.major}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Certifications */}
-          {formData.certifications && formData.certifications.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaCertificate /> CERTIFICATIONS</h2>
-              {formData.certifications.map(cert => (
-                <div key={cert.id} style={itemStyle}>
-                  <div style={itemTitleStyle}>{cert.name}</div>
-                  <div style={itemSubtitleStyle}>{cert.issuer}</div>
-                  {cert.date && <div style={itemDateStyle}>{cert.date}</div>}
-                </div>
-              ))}
-            </div>
-          )}
+            )}
+            {formData.phone && (
+              <div style={contactItemStyle}>
+                <FaPhone size={12} />
+                <span>{formData.phone}</span>
+              </div>
+            )}
+            {formData.location && (
+              <div style={contactItemStyle}>
+                <FaMapMarkerAlt size={12} />
+                <span>{formData.location}</span>
+              </div>
+            )}
+            {formData.linkedin && (
+              <div style={contactItemStyle}>
+                <FaLinkedin size={12} />
+                <a href={formData.linkedin} target="_blank" rel="noopener" style={{ color: '#4a5568', textDecoration: 'none' }}>
+                  LinkedIn
+                </a>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Right Column */}
-        <div style={rightColumnStyle}>
-         <div style={{paddingRight:'20px'}}>
-           {/* Work Experience */}
-          {formData.experience && formData.experience.length > 0 && (
-            <div style={sectionStyle} >
-              <h2 style={sectionTitleStyle}><FaBriefcase /> EXPERIENCE</h2>
-              {formData.experience.map(exp => (
-                <div key={exp.id} style={itemStyle}>
-                  <div style={itemHeaderStyle}>
-                    <div style={itemTitleStyle}>{exp.title}</div>
-                    {exp.startDate && exp.endDate && (
-                      <div style={itemDateStyle}>
-                        {exp.startDate} - {exp.endDate}
-                      </div>
-                    )}
-                  </div>
-                  <div style={itemSubtitleStyle}>{exp.company}</div>
-                  {exp.location && (
-                    <div style={itemDateStyle}>{exp.location}</div>
-                  )}
-                  <p style={itemDescriptionStyle}>
-                    {truncateContent(exp.description, 250)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+        {/* Main Content */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '30% 70%',
+          gap: '25px',
+          height:'100%',
+        }
+        }>
+          {/* Left Column */}
+          <div style={leftColumnStyle}>
+            {/* Profile */}
+            {formData.summary && (
+              <div style={sectionStyle}>
+                <h2 style={sectionTitleStyle}><FaUser /> PROFILE</h2>
+                <p style={itemDescriptionStyle}>
+                  {truncateContent(formData.summary, 200)}
+                </p>
+              </div>
+            )}
 
-          {/* Projects */}
-          {formData.projects && formData.projects.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaProjectDiagram /> PROJECTS</h2>
-              {formData.projects.map(project => (
-                <div key={project.id} style={itemStyle}>
-                  <div style={itemHeaderStyle}>
-                    <div style={itemTitleStyle}>{project.title}</div>
-                    {project.date && (
-                      <div style={itemDateStyle}>{project.date}</div>
-                    )}
-                  </div>
-                  <p style={itemDescriptionStyle}>
-                    {truncateContent(project.description, 200)}
-                  </p>
-                  {project.link && (
-                    <div style={{ fontSize: '11px', marginTop: '5px' }}>
-                      <a href={project.link} target="_blank" rel="noopener" style={{ color: '#4299e1' }}>
-                        View Project
-                      </a>
+            {/* Skills */}
+            {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
+              <div style={sectionStyle}>
+                <h2 style={sectionTitleStyle}><FaTools /> SKILLS</h2>
+                <div style={skillsGridStyle}>
+                  {formData.skills.map(skill => skill.name && (
+                    <div key={skill.id} style={skillItemStyle}>
+                      <FaCode size={10} />
+                      <span>{skill.name}</span>
                     </div>
-                  )}
+                  ))}
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            )}
 
-          {/* Languages */}
-          {formData.languages && formData.languages.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}><FaGlobe /> LANGUAGES</h2>
-              <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-                {formData.languages.map((lang, index) => (
-                  <div key={index} style={{ fontSize: '12px' }}>
-                    <span style={{ fontWeight: '500' }}>{lang.name}</span>
-                    {lang.proficiency && (
-                      <span style={{ color: '#718096' }}> ({lang.proficiency})</span>
+
+            {/* Education */}
+            {formData.education && formData.education.length > 0 && (
+              <div style={sectionStyle}>
+                <h2 style={sectionTitleStyle}><FaGraduationCap /> EDUCATION</h2>
+                {formData.education.map(edu => (
+                  <div key={edu.id} style={itemStyle}>
+                    <div style={itemHeaderStyle}>
+                      <div style={itemTitleStyle}>{edu.degree}</div>
+                      {edu.graduationDate && (
+                        <div style={itemDateStyle}>{edu.graduationDate}</div>
+                      )}
+                    </div>
+                    <div style={itemSubtitleStyle}>{edu.institution}</div>
+                    {edu.major && (
+                      <div style={itemDescriptionStyle}>{edu.major}</div>
                     )}
                   </div>
                 ))}
               </div>
+            )}
+
+            {/* Certifications */}
+            {formData.certifications && formData.certifications.length > 0 && (
+              <div style={sectionStyle}>
+                <h2 style={sectionTitleStyle}><FaCertificate /> CERTIFICATIONS</h2>
+                {formData.certifications.map(cert => (
+                  <div key={cert.id} style={itemStyle}>
+                    <div style={itemTitleStyle}>{cert.name}</div>
+                    <div style={itemSubtitleStyle}>{cert.issuer}</div>
+                    {cert.date && <div style={itemDateStyle}>{cert.date}</div>}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Right Column */}
+          <div style={rightColumnStyle}>
+            <div style={{ paddingRight: '20px' }}>
+              {/* Work Experience */}
+              {formData.experience && formData.experience.length > 0 && (
+                <div style={sectionStyle} >
+                  <h2 style={sectionTitleStyle}><FaBriefcase /> EXPERIENCE</h2>
+                  {formData.experience.map(exp => (
+                    <div key={exp.id} style={itemStyle}>
+                      <div style={itemHeaderStyle}>
+                        <div style={itemTitleStyle}>{exp.title}</div>
+                        {exp.startDate && exp.endDate && (
+                          <div style={itemDateStyle}>
+                            {exp.startDate} - {exp.endDate}
+                          </div>
+                        )}
+                      </div>
+                      <div style={itemSubtitleStyle}>{exp.company}</div>
+                      {exp.location && (
+                        <div style={itemDateStyle}>{exp.location}</div>
+                      )}
+                      <p style={itemDescriptionStyle}>
+                        {truncateContent(exp.description, 250)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Projects */}
+              {formData.projects && formData.projects.length > 0 && (
+                <div style={sectionStyle}>
+                  <h2 style={sectionTitleStyle}><FaProjectDiagram /> PROJECTS</h2>
+                  {formData.projects.map(project => (
+                    <div key={project.id} style={itemStyle}>
+                      <div style={itemHeaderStyle}>
+                        <div style={itemTitleStyle}>{project.title}</div>
+                        {project.date && (
+                          <div style={itemDateStyle}>{project.date}</div>
+                        )}
+                      </div>
+                      <p style={itemDescriptionStyle}>
+                        {truncateContent(project.description, 200)}
+                      </p>
+                      {project.link && (
+                        <div style={{ fontSize: '11px', marginTop: '5px' }}>
+                          <a href={project.link} target="_blank" rel="noopener" style={{ color: '#4299e1' }}>
+                            View Project
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Languages */}
+              {formData.languages && formData.languages.length > 0 && (
+                <div style={sectionStyle}>
+                  <h2 style={sectionTitleStyle}><FaGlobe /> LANGUAGES</h2>
+                  <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                    {formData.languages.map((lang, index) => (
+                      <div key={index} style={{ fontSize: '12px' }}>
+                        <span style={{ fontWeight: '500' }}>{lang.name}</span>
+                        {lang.proficiency && (
+                          <span style={{ color: '#718096' }}> ({lang.proficiency})</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-         </div>
+          </div>
         </div>
       </div>
-            </div>
     </div>
   );
 };

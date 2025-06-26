@@ -31,16 +31,19 @@ function ClassicTemplate({ formData }) {
             </section>
 
             {/* Skills */}
-            {formData.skills && formData.skills.length > 0 && (
+            {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
                 <section className="mb-6">
                     <h2 className={sectionTitleClasses}>Skills</h2>
                     <div className="flex flex-wrap gap-2">
-                        {formData.skills.map((skill, index) => (
-                            <span key={index} className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">{skill}</span>
+                        {formData.skills.map(skill => skill.name && (
+                            <span key={skill.id} className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                                {skill.name}
+                            </span>
                         ))}
                     </div>
                 </section>
             )}
+
 
             {/* Experience */}
             <section className="mb-6">
@@ -65,7 +68,7 @@ function ClassicTemplate({ formData }) {
                 ))}
             </section>
 
-             {/* Projects */}
+            {/* Projects */}
             {formData.projects && formData.projects.length > 0 && (
                 <section className="mb-6">
                     <h2 className={sectionTitleClasses}>Projects</h2>

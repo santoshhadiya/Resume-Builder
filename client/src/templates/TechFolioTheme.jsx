@@ -47,7 +47,7 @@ const TechFolioTheme = ({ formData }) => {
   // --- Main Component Render ---
   return (
     <div style={pageStyle}  id='resume-preview'>
-      <div style={{padding:'30px', height:'100%', width:'100%', backgroundColor: '#0d1117', color: '#c9d1d9',}}>
+      <div style={{padding:'30px', height:'100vh', width:'100%', backgroundColor: '#0d1117', color: '#c9d1d9',}}>
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #30363d', paddingBottom: '15px', flexWrap: 'wrap', gap: '15px' }}>
         <div>
           <h1 style={{ fontSize: '28px', margin: 0, color: '#58a6ff' }}>{formData.name || "Your Name"}</h1>
@@ -90,22 +90,22 @@ const TechFolioTheme = ({ formData }) => {
                 </div>
               </section>
           )}
-          
-          {formData.skills && formData.skills.length > 0 && (
-              <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
-                <h2 style={sectionTitleStyle}><span style={{color: '#f778ba'}}>&lt;</span>skills<span style={{color: '#f778ba'}}>&gt;</span></h2>
-                <div style={sectionWrapperStyle}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
-                    {formData.skills.map((skill) => (
-                        <div key={skill} style={{ background: '#161b22', padding: '5px 10px', borderRadius: '5px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
-                            {getTechIcon(skill)}
-                            {skill}
-                        </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-          )}
+          {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
+    <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid' */ }}>
+        <h2 style={sectionTitleStyle}><span style={{color: '#f778ba'}}>&lt;</span>skills<span style={{color: '#f778ba'}}>&gt;</span></h2>
+        <div style={sectionWrapperStyle}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
+                {formData.skills.map(skill => skill.name && (
+                    <div key={skill.id} style={{ background: '#161b22', padding: '5px 10px', borderRadius: '5px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+                        {getTechIcon(skill.name)}
+                        {skill.name}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+)}
+
 
           {formData.projects && formData.projects.length > 0 && (
               <section style={{ marginBottom: '25px', /* pageBreakInside: 'avoid'  */}}>

@@ -100,24 +100,25 @@ const MinimalistMonochrome = ({ formData }) => {
         </section>
       )}
       
-      {formData.skills && formData.skills.length > 0 && (
-        <section style={{ marginBottom: '30px', /* pageBreakInside: 'avoid' */ }}>
-          <h2 style={sectionTitleStyle}>Skills</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {formData.skills.map((skill, index) => (
-              <span key={index} style={{
-                backgroundColor: '#f0f0f0',
-                padding: '6px 12px',
-                borderRadius: '4px',
-                fontSize: '13px',
-                fontWeight: 500
-              }}>
-                {skill}
-              </span>
+     {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
+    <section style={{ marginBottom: '30px', /* pageBreakInside: 'avoid' */ }}>
+        <h2 style={sectionTitleStyle}>Skills</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {formData.skills.map(skill => skill.name && (
+                <span key={skill.id} style={{
+                    backgroundColor: '#f0f0f0',
+                    padding: '6px 12px',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    fontWeight: 500
+                }}>
+                    {skill.name}
+                </span>
             ))}
-          </div>
-        </section>
-      )}
+        </div>
+    </section>
+)}
+
       </div>
     </div>
   );

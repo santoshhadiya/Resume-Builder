@@ -268,23 +268,24 @@ const FuturisticTemplate = ({ formData }) => {
           )}
 
           {/* Skills */}
-          {formData.skills && formData.skills.length > 0 && (
-            <div style={sectionStyle}>
-              <h2 style={sectionTitleStyle}>
-                <FiZap size={18} />
-                <span>SKILLS</span>
-                <div style={sectionTitleLineStyle}></div>
-              </h2>
-              <div style={skillsGridStyle}>
-                {formData.skills.map((skill, index) => (
-                  <div key={index} style={skillItemStyle}>
+       {formData.skills && formData.skills.length > 0 && formData.skills.some(s => s.name) && (
+    <div style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>
+            <FiZap size={18} />
+            <span>SKILLS</span>
+            <div style={sectionTitleLineStyle}></div>
+        </h2>
+        <div style={skillsGridStyle}>
+            {formData.skills.map(skill => skill.name && (
+                <div key={skill.id} style={skillItemStyle}>
                     <FiCode size={14} color={accentColor} />
-                    <span>{skill}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+                    <span>{skill.name}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+)}
+
         </div>
 
         {/* Right Column */}

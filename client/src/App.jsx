@@ -1,439 +1,408 @@
-import React, { useState, useCallback } from "react";
+// App.jsx
+import React, { useState, useEffect, useCallback } from "react";
+import axios from 'axios';
+import { FiLogOut } from 'react-icons/fi';
+
+// Import Pages
 import DashboardPage from "./Pages/DashboardPage";
 import FormPage from "./Pages/FormPage";
 import PreviewPage from "./Pages/PreviewPage";
-
-function App() {
-  const [currentPage, setCurrentPage] = useState("dashboard");
-  const [resumes, setResumes] = useState([]);
-  const [currentResumeId, setCurrentResumeId] = useState(null);
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  const initialFormData = {
-    id: null,
-    name: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    portfolio: "",
-    summary: "",
-    template: 'Classic',
-    lastEdited: null,
-    skills: [],
-    experience: [{ id: Date.now(), title: "", company: "", location: "", startDate: "", endDate: "", description: "" }],
-    education: [{ id: Date.now() + 1, degree: "", major: "", institution: "", location: "", graduationDate: "" }],
-    projects: [],
-    certifications: [],
-    languages: [],
-  };
-
- /* const initialFormData = {
-  id: 1,
-  name: "John Deo",
-  email: "john.deo@example.com",
-  phone: "+1 123-456-7890",
-  linkedin: "https://linkedin.com/in/johndeo",
-  portfolio: "https://johndeo.dev",
-  summary: "Motivated full-stack web developer with a passion for creating efficient, scalable, and user-friendly web applications. Experienced in JavaScript, React, and Node.js with a solid understanding of software engineering principles.",
-  template: 'Classic',
-  lastEdited: new Date().toISOString(),
-  skills: [
-    "JavaScript", "React", "Node.js", "MongoDB", "HTML", "CSS",
-    "Git", "REST APIs", "Express.js", "Redux", "TypeScript",
-    "Bootstrap", "Tailwind CSS", "GraphQL", "Jest", "Firebase"
-  ],
-  experience: [
-    {
-      id: Date.now(),
-      title: "Full Stack Developer",
-      company: "Tech Solutions Inc.",
-      location: "New York, NY",
-      startDate: "2022-06",
-      endDate: "2024-05",
-      description: "Developed and maintained full-stack web applications using React and Node.js. Improved API response time by 30% and implemented modern UI designs using Tailwind CSS."
-    },
-    {
-      id: Date.now() + 1,
-      title: "Frontend Developer Intern",
-      company: "Creative Minds Studio",
-      location: "Remote",
-      startDate: "2021-01",
-      endDate: "2021-06",
-      description: "Built reusable UI components using React and integrated with REST APIs. Improved the mobile responsiveness of the site by 40%."
-    }
-  ],
-  education: [
-    {
-      id: Date.now() + 2,
-      degree: "Bachelor of Science",
-      major: "Computer Science",
-      institution: "University of California",
-      location: "Los Angeles, CA",
-      graduationDate: "2022-05"
-    },
-    {
-      id: Date.now() + 3,
-      degree: "High School Diploma",
-      major: "Science Stream",
-      institution: "St. Xavier's High School",
-      location: "San Diego, CA",
-      graduationDate: "2018-06"
-    }
-  ],
-  projects: [
-    {
-      id: 1,
-      title: "Portfolio Website",
-      description: "Designed and developed a responsive personal portfolio using React, showcasing projects, blogs, and contact form integration.",
-      link: "https://johndeo.dev"
-    },
-    {
-      id: 2,
-      title: "Task Manager App",
-      description: "Built a full-stack task manager using MERN stack with user authentication and task tracking features.",
-      link: "https://github.com/johndeo/task-manager"
-    },
-    {
-      id: 3,
-      title: "E-Commerce Store",
-      description: "Created a complete e-commerce website with cart, payment gateway, and admin dashboard using React, Redux, and Firebase.",
-      link: "https://github.com/johndeo/e-commerce"
-    },
-    {
-      id: 4,
-      title: "Chat Application",
-      description: "Developed a real-time chat app with Socket.IO, including private messaging, typing indicators, and multi-room support.",
-      link: "https://github.com/johndeo/chat-app"
-    }
-  ],
-  certifications: [
-    {
-      id: 1,
-      name: "Full-Stack Web Development",
-      issuer: "Coursera",
-      date: "2023-04"
-    },
-    {
-      id: 2,
-      name: "React Developer Certification",
-      issuer: "Meta",
-      date: "2022-10"
-    }
-  ],
-  languages: [
-    {
-      name: "English",
-      proficiency: "Native"
-    },
-    {
-      name: "Hindi",
-      proficiency: "Fluent"
-    },
-    {
-      name: "Spanish",
-      proficiency: "Intermediate"
-    }
-  ]
-}; */
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import PricingPage from "./pages/PricingPage"; // Import the new PricingPage
 
 
-  const [formData, setFormData] = useState(initialFormData);
-
-
-  const handleNewResume = (templateName = 'Classic') => {
-    const newResume = { ...initialFormData, id: Date.now(), template: templateName };
-    setResumes([...resumes, newResume]);
-    setCurrentResumeId(newResume.id);
-    setFormData(newResume);
-    setCurrentPage("form");
-  };
-
-  const handleEditResume = (id) => {
-    const resumeToEdit = resumes.find(r => r.id === id);
-    if (resumeToEdit) {
-      setCurrentResumeId(id);
-      setFormData(resumeToEdit);
-      setCurrentPage("form");
-    }
-  };
-
-  const handlePreviewResume = (resumeData) => {
-    setFormData(resumeData);
-    setCurrentPage("preview");
-  };
-
-
-  const handleSaveAndToDashboard = () => {
-    const updatedResumes = resumes.map(r =>
-      r.id === currentResumeId ? { ...formData, lastEdited: new Date() } : r
-    );
-    setResumes(updatedResumes);
-    setCurrentPage("dashboard");
-  }
-  const handleDeleteResume = (id) => {
-    setResumes(resumes.filter(r => r.id !== id));
-  };
-
-  const gotoHome = () => {
-    setCurrentPage("dashboard");
-  }
-
-  const handleInputChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  }, []);
-
-  const handleAddItem = useCallback((section) => {
-    setFormData((prevData) => {
-      const newId = Date.now();
-      let newItem;
-      if (section === "experience") {
-        newItem = { id: newId, title: "", company: "", location: "", startDate: "", endDate: "", description: "" };
-      } else if (section === "education") {
-        newItem = { id: newId, degree: "", major: "", institution: "", location: "", graduationDate: "" };
-      } else if (section === "projects") {
-        newItem = { id: newId, title: "", description: "", technologies: "", link: "" };
-      } else if (section === "certifications") {
-        newItem = { id: newId, name: "", issuer: "", date: "" };
-      } else if (section === "languages") {
-        newItem = { id: newId, name: "", proficiency: "" };
-      }
-      return {
-        ...prevData,
-        [section]: [...prevData[section], newItem],
-      };
-    });
-  }, []);
-
-  const handleItemChange = useCallback((section, id, field, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [section]: prevData[section].map((item) =>
-        item.id === id ? { ...item, [field]: value } : item
-      ),
-    }));
-  }, []);
-
-  const handleRemoveItem = useCallback((section, id) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [section]: prevData[section].filter((item) => item.id !== id),
-    }));
-  }, []);
-
-  const handleSkillsChange = useCallback((e) => {
-    const value = e.target.value;
-    const skillArray = value.split(",").map((skill) => skill.trim()).filter(Boolean);
-    setFormData((prevData) => ({
-      ...prevData,
-      skills: skillArray,
-    }));
-  }, []);
-
-
-
-
-const handleDownloadPDF = async () => {
-    const resumePreviewElement = document.getElementById("resume-preview");
-
-    if (!resumePreviewElement) {
-        console.error("Resume preview element not found for PDF generation.");
-        alert("An error occurred while generating the PDF. The preview element is missing.");
-        return;
-    }
-    setIsDownloading(true);
-
-    // --- NEW: Robustly gather all CSS ---
-    const getallCssText = async () => {
-        let css = [];
-        // 1. Iterate over all stylesheets in the document
-        for (const sheet of document.styleSheets) {
-            try {
-                // 2. For each sheet, iterate over its rules and add to the array
-                if (sheet.cssRules) {
-                    for (const rule of sheet.cssRules) {
-                        css.push(rule.cssText);
-                    }
-                }
-            } catch (e) {
-                // 3. Handle CORS errors for external stylesheets
-                console.warn("Could not read CSS rules from stylesheet (CORS issue):", sheet.href);
-                if (sheet.href) {
-                    try {
-                        // 4. Fetch the stylesheet content manually
-                        const response = await fetch(sheet.href);
-                        if (response.ok) {
-                            const text = await response.text();
-                            css.push(text);
-                        }
-                    } catch (fetchError) {
-                        console.error("Failed to fetch stylesheet:", sheet.href, fetchError);
-                    }
-                }
-            }
-        }
-        return css.join('\n');
-    };
-
-    const allCss = await getallCssText();
-    const htmlContent = resumePreviewElement.innerHTML;
-
-    // --- Create a self-contained HTML payload ---
-    const fullHTML = `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <title>Resume</title>
-          <style>
-            /* Critical CSS for page layout and to prevent overflow */
-            @page {
-              size: A4;
-              margin: 0;
-            }
-            body {
-              margin: 0px;
-              padding: 0;
-              -webkit-print-color-adjust: exact; /* Ensures background colors print */
-              print-color-adjust: exact;
-            }
-            /* Ensure the root preview element adheres to the A4 box model */
-            #resume-preview {
-              width: 210mm !important;
-              min-height: 297mm !important;
-              box-sizing: border-box !important;
-              margin: 0 !important;
-              padding: 0 !important;
-              overflow: hidden !important; /* Prevents content from spilling */
-            }
-
-            /* --- Inlined all page CSS, including Tailwind --- */
-            ${allCss}
-          </style>
-        </head>
-        <body>
-          ${htmlContent}
-        </body>
-      </html>
-    `;
-    
-    console.log("--- HTML PAYLOAD BEING SENT TO SERVER ---");
-console.log(fullHTML);
-
-    try {
-        const response = await fetch("http://localhost:5000/generate-pdf", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ html: fullHTML })
-        });
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-        }
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `${formData.name || 'resume'}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-    } catch (error) {
-        console.error("Error generating PDF:", error);
-        alert("Failed to generate PDF. Please ensure the backend server is running and check the console for errors.");
-    } finally {
-        setIsDownloading(false);
+// --- Axios global setup ---
+const setupAxios = (token) => {
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+        delete axios.defaults.headers.common['Authorization'];
     }
 };
 
 
-  return (
-    <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style={{ fontFamily: 'Manrope, "Noto Sans", sans-serif' }}>
-      <div className="layout-container flex h-full grow flex-col">
-        <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3">
-          <div className="flex items-center gap-4 text-[#111418]">
-            <div className="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_6_535)">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
-                </defs>
-              </svg>
-            </div>
-            <h2 className="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] cursor-pointer" onClick={gotoHome}>ResumeCraft</h2>
-          </div>
-          <div className="flex flex-1 justify-end gap-8">
-            <div
-              className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style={{ backgroundImage: 'url("https://via.placeholder.com/40")' }}
-            ></div>
-          </div>
-        </header>
-        <div className="px-40 flex flex-1 justify-center py-5">
+function App() {
+    const [currentPage, setCurrentPage] = useState('login'); // Default to login
+    const [resumes, setResumes] = useState([]);
+    const [currentResumeId, setCurrentResumeId] = useState(null);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [token, setToken] = useState(localStorage.getItem('authToken'));
+    const [user, setUser] = useState(null); // To store user info
+
+    // --- Initial FormData Structure ---
+    const initialFormData = {
+        id: null, name: "", professionalTitle: "", photo: "", email: "", phone: "",
+        address: { city: "", state: "", pincode: "" }, linkedin: "", portfolio: "",
+        summary: "", template: 'Classic', lastEdited: null,
+        skills: [{ id: Date.now(), name: "" }],
+        experience: [{ id: Date.now(), title: "", company: "", companyCity: "", startDate: "", endDate: "", description: "" }],
+        education: [{ id: Date.now() + 1, degree: "", institution: "", passingYear: "" }],
+        projects: [{ id: Date.now() + 2, title: "", description: "", link: "" }],
+        certifications: [],
+        languages: [{ id: Date.now() + 3, name: "", proficiency: "Fluent" }],
+    };
+
+ const [formData, setFormData] = useState(initialFormData);
+
+    // --- Authentication Effect ---
+    useEffect(() => {
+        const storedToken = localStorage.getItem('authToken');
+        if (storedToken) {
+            setToken(storedToken);
+            setupAxios(storedToken);
+            setCurrentPage('dashboard');
+        } else {
+            setCurrentPage('login');
+        }
+    }, []);
+
+    // --- Auth Handlers ---
+    const handleLogin = (newToken) => {
+        localStorage.setItem('authToken', newToken);
+        setToken(newToken);
+        setupAxios(newToken);
+        setCurrentPage('dashboard');
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        setToken(null);
+        setResumes([]);
+        setCurrentPage('login');
+        setupAxios(null); // Clear auth header
+    };
+
+    // --- Resume Handlers ---
+    const fetchResumes = useCallback(async () => {
+        if (!token) return;
+        try {
+            const res = await axios.get('http://localhost:5000/api/resumes');
+            const fetchedResumes = res.data.data.map(r => ({...r, id: r._id }));
+            setResumes(fetchedResumes);
+        } catch (error) {
+            console.error("Failed to fetch resumes", error);
+            if (error.response?.status === 401) {
+                handleLogout();
+            }
+        }
+    }, [token]);
+
+    useEffect(() => {
+        if (currentPage === 'dashboard') {
+            fetchResumes();
+        }
+    }, [currentPage, fetchResumes]);
+
+    const handleNewResume = (templateName = 'Classic') => {
+        const newResumeData = { ...initialFormData, id: null, _id: undefined, template: templateName };
+        setFormData(newResumeData);
+        setCurrentResumeId(null);
+        setCurrentPage("form");
+    };
+
+    const handleEditResume = (id) => {
+        const resumeToEdit = resumes.find(r => r.id === id);
+        if (resumeToEdit) {
+            setCurrentResumeId(id);
+            setFormData(resumeToEdit);
+            setCurrentPage("form");
+        }
+    };
+    
+    const handleSaveAndToDashboard = async () => {
+        try {
+            let res;
+            const { id, _id, ...saveData } = formData;
+    
+            if (currentResumeId) {
+                res = await axios.put(`http://localhost:5000/api/resumes/${currentResumeId}`, saveData);
+            } else {
+                res = await axios.post('http://localhost:5000/api/resumes', saveData);
+            }
+    
+            if (res.data.success) {
+                fetchResumes();
+                setCurrentPage("dashboard");
+            }
+        } catch (error) {
+            console.error("Failed to save resume", error);
+            alert("Could not save resume. Please try again.");
+        }
+    };
+    
+    const handleSaveAndPreview = async () => {
+        try {
+            let res;
+            const { id, _id, ...saveData } = formData;
+    
+            if (currentResumeId) {
+                res = await axios.put(`http://localhost:5000/api/resumes/${currentResumeId}`, saveData);
+            } else {
+                res = await axios.post('http://localhost:5000/api/resumes', saveData);
+            }
+    
+            if (res.data.success) {
+                const savedResume = { ...res.data.data, id: res.data.data._id };
+                setFormData(savedResume);
+                setCurrentResumeId(savedResume.id);
+                fetchResumes();
+                setCurrentPage("preview");
+            }
+        } catch (error) {
+            console.error("Failed to save resume", error);
+            alert("Could not save resume. Please try again.");
+        }
+    };
+    
+    const handleDeleteResume = async (id) => {
+        if (window.confirm('Are you sure you want to delete this resume?')) {
+            try {
+                await axios.delete(`http://localhost:5000/api/resumes/${id}`);
+                setResumes(resumes.filter(r => r.id !== id));
+            } catch (error) {
+                console.error("Failed to delete resume", error);
+                alert("Could not delete resume.");
+            }
+        }
+    };
+
+    const handlePreviewResume = (resumeDataOrId) => {
+        let resumeData = typeof resumeDataOrId === 'object' ? resumeDataOrId : resumes.find(r => r.id === resumeDataOrId);
+        if (resumeData) {
+            setFormData(resumeData);
+            setCurrentPage("preview");
+        }
+    };
+
+    const gotoHome = () => {
+      if (token) setCurrentPage("dashboard");
+      else setCurrentPage("login");
+    }
+
+    // --- Input and Form change handlers (No changes needed) ---
+    const handleInputChange = useCallback((e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }, []);
+    const handleAddressChange = useCallback((e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({...prevData, address: { ...prevData.address, [name]: value } }));
+    }, []);
+    const handlePhotoChange = useCallback((e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => { setFormData(prevData => ({ ...prevData, photo: reader.result })); };
+            reader.readAsDataURL(file);
+        }
+    }, []);
+    const handleAddItem = useCallback((section) => {
+        setFormData((prevData) => {
+          const newId = Date.now();
+          let newItem;
+          if (section === "experience") newItem = { id: newId, title: "", company: "", companyCity: "", startDate: "", endDate: "", description: "" };
+          else if (section === "education") newItem = { id: newId, degree: "", institution: "", passingYear: "" };
+          else if (section === "projects") newItem = { id: newId, title: "", description: "", link: "" };
+          else if (section === "certifications") newItem = { id: newId, name: "", issuer: "", date: "" };
+          else if (section === "languages") newItem = { id: newId, name: "", proficiency: "Fluent" };
+          else if (section === "skills") newItem = { id: newId, name: "" };
+          return { ...prevData, [section]: [...(prevData[section] || []), newItem] };
+        });
+    }, []);
+    const handleItemChange = useCallback((section, id, field, value) => {
+        setFormData((prevData) => ({
+          ...prevData,
+          [section]: prevData[section].map((item) => item.id === id ? { ...item, [field]: value } : item),
+        }));
+    }, []);
+    const handleRemoveItem = useCallback((section, id) => {
+        setFormData((prevData) => ({
+          ...prevData,
+          [section]: prevData[section].filter((item) => item.id !== id),
+        }));
+    }, []);
 
 
-          {currentPage === 'dashboard' && (
-            <DashboardPage
-              onNewResume={handleNewResume}
-              onEditResume={handleEditResume}
-              onPreviewResume={handlePreviewResume}
-              onDeleteResume={handleDeleteResume}
-              resumes={resumes}
-            />
-          )}
-
-          {currentPage === 'form' && (
-            <FormPage
-              formData={formData}
-
-              onInputChange={handleInputChange}
-              onItemChange={handleItemChange}
-              onAddItem={handleAddItem}
-              onRemoveItem={handleRemoveItem}
-              onSkillsChange={handleSkillsChange}
-              onSave={handleSaveAndToDashboard}
-            />
-          )}
-
-          {currentPage === 'preview' && (
-            <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
-              <PreviewPage formData={formData} />
-              <div className="flex px-4 py-3 justify-start">
-                <button
-                  onClick={() => setCurrentPage('form')}
-                  className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span className="truncate">Edit Again</span>
-                </button>
+    // --- PDF Download Handler (FIXED) ---
+    const handleDownloadPDF = async () => {
+        const resumePreviewElement = document.getElementById("resume-preview");
+    
+        if (!resumePreviewElement) {
+            console.error("Resume preview element not found for PDF generation.");
+            alert("An error occurred while generating the PDF. The preview element is missing.");
+            return;
+        }
+        setIsDownloading(true);
+    
+        const getallCssText = async () => {
+            let css = [];
+            for (const sheet of document.styleSheets) {
+                try {
+                    if (sheet.cssRules) {
+                        for (const rule of sheet.cssRules) {
+                            css.push(rule.cssText);
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Could not read CSS rules from stylesheet (CORS issue):", sheet.href);
+                    if (sheet.href) {
+                        try {
+                            const response = await fetch(sheet.href);
+                            if (response.ok) {
+                                const text = await response.text();
+                                css.push(text);
+                            }
+                        } catch (fetchError) {
+                            console.error("Failed to fetch stylesheet:", sheet.href, fetchError);
+                        }
+                    }
+                }
+            }
+            return css.join('\n');
+        };
+    
+        const allCss = await getallCssText();
+        const htmlContent = resumePreviewElement.innerHTML;
+    
+        const fullHTML = `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>Resume</title>
+              <style>
+                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@600;700&family=Inter&display=swap');
+                @page {
+                  size: A4;
+                  margin: 0;
+                }
+                body {
+                  margin: 0px;
+                  padding: 0;
+                  -webkit-print-color-adjust: exact;
+                  print-color-adjust: exact;
+                }
+                #resume-preview {
+                  width: 210mm !important;
+                  min-height: 297mm !important;
+                  box-sizing: border-box !important;
+                  margin: 0 !important;
+                  padding: 0 !important;
+                  overflow: hidden !important;
+                }
+                ${allCss}
+              </style>
+            </head>
+            <body>
+              <div id="resume-preview">
+                ${htmlContent}
               </div>
-              <div className="flex px-4 py-3 justify-start">
-                <button
-                  onClick={handleDownloadPDF}
-                  className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span className="truncate">Download PDF</span>
-                </button>
-              </div>
+            </body>
+          </html>
+        `;
+    
+        try {
+            const response = await fetch("http://localhost:5000/generate-pdf", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ html: fullHTML })
+            });
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            }
+    
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${formData.name || 'resume'}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+            alert("Failed to generate PDF. Please ensure the backend server is running and check the console for errors.");
+        } finally {
+            setIsDownloading(false);
+        }
+    };
+    
 
+    // --- Render Logic ---
+    const renderPage = () => {
+        switch (currentPage) {
+            case 'login':
+                return <LoginPage onLogin={handleLogin} onSwitchToSignup={() => setCurrentPage('signup')} />;
+            case 'signup':
+                return <SignupPage onLogin={handleLogin} onSwitchToLogin={() => setCurrentPage('login')} />;
+            case 'dashboard':
+                return <DashboardPage
+                    onNewResume={handleNewResume}
+                    onEditResume={handleEditResume}
+                    onPreviewResume={handlePreviewResume}
+                    onDeleteResume={handleDeleteResume}
+                    resumes={resumes} />;
+            case 'form':
+                return <FormPage
+                    formData={formData}
+                    onInputChange={handleInputChange} onAddressChange={handleAddressChange} onPhotoChange={handlePhotoChange}
+                    onItemChange={handleItemChange} onAddItem={handleAddItem} onRemoveItem={handleRemoveItem}
+                    onSave={handleSaveAndToDashboard} onSaveAndPreview={handleSaveAndPreview} />;
+            case 'preview':
+                return (
+                    <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+                        <div id="resume-preview">
+                          <PreviewPage formData={formData} />
+                        </div>
+                        <div className="flex px-4 py-3 justify-start gap-4">
+                            <button onClick={() => setCurrentPage('form')} className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f5] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]">Edit Again</button>
+                            <button onClick={handleDownloadPDF} disabled={isDownloading} className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#0c7ff2] text-white text-sm font-bold leading-normal tracking-[0.015em] disabled:bg-gray-400">{isDownloading ? 'Downloading...' : 'Download PDF'}</button>
+                        </div>
+                    </div>
+                );
+            case 'pricing':
+                return <PricingPage />;
+            default:
+                return <LoginPage onLogin={handleLogin} onSwitchToSignup={() => setCurrentPage('signup')} />;
+        }
+    };
+
+    return (
+        <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style={{ fontFamily: 'Manrope, "Noto Sans", sans-serif' }}>
+            <div className="layout-container flex h-full grow flex-col">
+                <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3">
+                    <div className="flex items-center w-f gap-4 text-[#111418]">
+                        <div className="size-4  w-[40px] h-[40px]">
+                         {/* <img src='https://cdn-icons-png.freepik.com/256/9746/9746312.png?semt=ais_hybrid'></img> */}
+                        </div>
+                        <h2 className="text-[#111418] text-xl font-bold leading-tight tracking-[-0.015em] cursor-pointer" onClick={gotoHome}>MyResumeLab</h2>
+                    </div>
+                    {token && (
+                         <div className="flex items-center gap-8">
+                             <nav className="flex items-center gap-6 text-sm font-medium text-gray-600">
+                                <button onClick={() => setCurrentPage('dashboard')} className="hover:text-blue-600">My Resumes</button>
+                                 <button onClick={() => setCurrentPage('pricing')} className="hover:text-blue-600">Pricing</button>
+                                <button onClick={() => handleNewResume()} className="bg-gray-300 p-2 cursor-pointer px-5  rounded-lg  cursor text-black font-bold">New Resume</button>
+                                
+                               
+                            </nav>
+                            <button onClick={handleLogout} className="text-gray-500 hover:text-black cursor-pointer">
+                                <FiLogOut size={20} />
+                            </button>
+                            <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style={{ backgroundImage: 'url("https://via.placeholder.com/40")' }}></div>
+                        </div>
+                    )}
+                </header>
+                <div className="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+                    {renderPage()}
+                </div>
             </div>
-          )}
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;
