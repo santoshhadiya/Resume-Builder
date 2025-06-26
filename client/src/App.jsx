@@ -9,9 +9,9 @@ const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com';
 import DashboardPage from "./Pages/DashboardPage";
 import FormPage from "./Pages/FormPage";
 import PreviewPage from "./Pages/PreviewPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import PricingPage from "./pages/PricingPage"; // Import the new PricingPage
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
+import PricingPage from "./Pages/PricingPage"; // Import the new PricingPage
 
 
 // --- Axios global setup ---
