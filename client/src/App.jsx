@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from 'axios';
 import { FiLogOut } from 'react-icons/fi';
 
+const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com';
+
 // Import Pages
 import DashboardPage from "./Pages/DashboardPage";
 import FormPage from "./Pages/FormPage";
@@ -77,7 +79,7 @@ function App() {
     const fetchResumes = useCallback(async () => {
         if (!token) return;
         try {
-            const res = await axios.get('http://localhost:5000/api/resumes');
+            const res = await axios.get(`${BACKEND_URI}/api/resumes`);
             const fetchedResumes = res.data.data.map(r => ({...r, id: r._id }));
             setResumes(fetchedResumes);
         } catch (error) {
@@ -116,9 +118,9 @@ function App() {
             const { id, _id, ...saveData } = formData;
     
             if (currentResumeId) {
-                res = await axios.put(`http://localhost:5000/api/resumes/${currentResumeId}`, saveData);
+                res = await axios.put(`${BACKEND_URI}/api/resumes/${currentResumeId}`, saveData);
             } else {
-                res = await axios.post('http://localhost:5000/api/resumes', saveData);
+                res = await axios.post(`${BACKEND_URI}/api/resumes`, saveData);
             }
     
             if (res.data.success) {
@@ -137,9 +139,9 @@ function App() {
             const { id, _id, ...saveData } = formData;
     
             if (currentResumeId) {
-                res = await axios.put(`http://localhost:5000/api/resumes/${currentResumeId}`, saveData);
+                res = await axios.put(`${BACKEND_URI}/api/resumes/${currentResumeId}`, saveData);
             } else {
-                res = await axios.post('http://localhost:5000/api/resumes', saveData);
+                res = await axios.post(`${BACKEND_URI}/api/resumes`, saveData);
             }
     
             if (res.data.success) {
@@ -158,7 +160,7 @@ function App() {
     const handleDeleteResume = async (id) => {
         if (window.confirm('Are you sure you want to delete this resume?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/resumes/${id}`);
+                await axios.delete(`${BACKEND_URI}/api/resumes/${id}`);
                 setResumes(resumes.filter(r => r.id !== id));
             } catch (error) {
                 console.error("Failed to delete resume", error);

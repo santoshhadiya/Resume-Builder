@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com'
+
 function LoginPage({ onLogin, onSwitchToSignup }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +17,7 @@ function LoginPage({ onLogin, onSwitchToSignup }) {
         return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post(`${BACKEND_URI}/api/auth/login`, {
         email,
         password,
       });
