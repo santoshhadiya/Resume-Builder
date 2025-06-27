@@ -1,0 +1,29 @@
+
+services:
+  - type: web
+    name: resume-builder-backend 
+    env: node
+    plan: free # or your plan type
+    buildCommand: 'npm install && npm run build' 
+    startCommand: 'node index.js'
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+    systemDependencies:
+      - type: apt
+        name: libnss3
+      - type: apt
+        name: libgconf-2-4
+      - type: apt
+        name: libatk1.0-0
+      - type: apt
+        name: libatk-bridge2.0-0
+      - type: apt
+        name: libgdk-pixbuf2.0-0
+      - type: apt
+        name: libgtk-3-0
+      - type: apt
+        name: libgbm-dev
+      - type: apt
+        name: libasound2

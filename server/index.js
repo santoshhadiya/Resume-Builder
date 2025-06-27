@@ -8,8 +8,6 @@ require('dotenv').config();
 
 
 
-
-// --- Import new routes ---
 const authRoutes = require('./routes/auth');
 const resumeRoutes = require('./routes/resumes');
 
@@ -24,19 +22,26 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error :', err));
 
-// --- Use new API routes ---
 app.use('/api/auth', authRoutes);
 app.use('/api/resumes', resumeRoutes);
 
-// This route can remain public as it only processes HTML sent from the client
+
 app.post('/generate-pdf', async (req, res) => {
   try {
     const { html } = req.body;
 
-    const browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
+   const browser = await puppeteer.launch({
+  headless: 'new',
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage', 
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process', //  reduce memory usage 
+    '--disable-gpu' 
+  ]
+});
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 1080, deviceScaleFactor: 1 });
     await page.setContent(html, { waitUntil: 'networkidle0' });
