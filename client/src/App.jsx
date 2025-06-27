@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from 'axios';
 import { FiLogOut } from 'react-icons/fi';
 
-const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com';
+const BACKEND_URI='https://resume-builder-backend-cpsm.onrender.com';
 /*  const BACKEND_URI ='http://localhost:5000' */
 
 // Import Pages

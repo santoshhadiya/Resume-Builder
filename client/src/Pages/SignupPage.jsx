@@ -7,7 +7,7 @@ function SignupPage({ onLogin, onSwitchToLogin }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com'
+  const BACKEND_URI='https://resume-builder-backend-cpsm.onrender.com'
 /*  const BACKEND_URI ='http://localhost:5000' */
 
   const handleSignup = async (e) => {

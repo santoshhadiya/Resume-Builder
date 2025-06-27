@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const BACKEND_URI='https://resume-builder-backend-yp61.onrender.com'
+const BACKEND_URI='https://resume-builder-backend-cpsm.onrender.com'
  /* const BACKEND_URI ='http://localhost:5000' */
 
 function LoginPage({ onLogin, onSwitchToSignup }) {
